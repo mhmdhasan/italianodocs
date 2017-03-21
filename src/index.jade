@@ -1,0 +1,237 @@
+extends _jade-includes/layout
+
+block content
+    .container
+        h1 Bootstrap(ious) 4 Boilerplate
+        p This is a sample content.
+
+    .container
+        .jumbotron
+            h1 Kitchen Sink
+            p A quick preview of everything Bootstrap has to offer.
+            p
+                a.btn.btn-primary.btn-large(href="#") Learn more »
+                | 
+                a.btn.btn-outline-primary.btn-large(href="#") Learn more »
+        .row
+            .col-lg-6
+                #headings.card.mb-4
+                    .card-header Headings
+                    .card-block
+                        h1.page-header
+                            | Page Header
+                            small With Small Text
+                        h1 This is an h1 heading
+                        h2 This is an h2 heading
+                        h3 This is an h3 heading
+                        h4 This is an h4 heading
+                        h5 This is an h5 heading
+                        h6 This is an h6 heading
+                #tables.card.mb-4
+                    .card-header
+                        | Tables
+                    .card-block
+                        table.table.table-hover
+                            thead
+                                tr
+                                    th #
+                                    th First Name
+                                    th Tables
+                            tbody
+                                tr
+                                    td 1
+                                    td Michael
+                                    td Are formatted like this
+                                tr
+                                    td 2
+                                    td Lucille
+                                    td Do you like them?
+                                tr.success
+                                    td 3
+                                    td Success
+                                    td
+                                tr.danger
+                                    td 4
+                                    td Danger
+                                    td
+                                tr.warning
+                                    td 5
+                                    td Warning
+                                    td
+                                tr.active
+                                    td 6
+                                    td Active
+                                    td
+                        table.table.table-striped.table-bordered.table-condensed
+                            thead
+                                tr
+                                    th #
+                                    th First Name
+                                    th Tables
+                            tbody
+                                tr
+                                    td 1
+                                    td Michael
+                                    td This one is bordered and condensed
+                                tr
+                                    td 2
+                                    td Lucille
+                                    td Do you still like it?
+            .col-lg-6
+                #content-formatting.card.mb-4
+                    .card-header
+                        | Content Formatting
+                    .card-block
+                        p.lead This is a lead paragraph.
+                        p
+                            | This is an 
+                            b ordinary paragraph
+                            |  that is 
+                            i long enough
+                            |  to wrap to 
+                            u multiple lines
+                            |  so that you can see how the line spacing looks.
+                        p.text-muted Muted color paragraph.
+                        p.text-warning Warning color paragraph.
+                        p.text-danger Danger color paragraph.
+                        p.text-info Info color paragraph.
+                        p.text-success Success color paragraph.
+                        p
+                            small
+                                | This is text in a 
+                                code small
+                                |  wrapper. 
+                                abbr(title='No Big Deal') NBD
+                                | , right?
+                        hr
+                        address
+                            strong Twitter, Inc.
+                            br
+                            |  795 Folsom Ave, Suite 600
+                            br
+                            |  San Francisco, CA 94107
+                            br
+                            abbr(title='Phone') P:
+                            |  (123) 456-7890
+                        address.col-6
+                            strong Full Name
+                            br
+                            a(href='mailto:#') first.last@example.com
+                        hr
+                        blockquote
+                            | Here's what a blockquote looks like in Bootstrap.
+                            small
+                                | Use 
+                                code small
+                                |  to identify the source.
+                        hr
+                        .row
+                            .col-xs-6
+                                ul
+                                    li Normal Unordered List
+                                    li
+                                        | Can Also Work
+                                        ul
+                                            li With Nested Children
+                                    li Adds Bullets to Page
+                            .col-xs-6
+                                ol
+                                    li Normal Ordered List
+                                    li
+                                        | Can Also Work
+                                        ol
+                                            li With Nested Children
+                                    li Adds Bullets to Page
+                        hr
+                        pre.
+                            \nfunction preFormatting() {  // looks like this;  var something = somethingElse;  return true;}                        
+        #forms.card.mb-4
+            .card-header
+                | Forms
+            .card-block
+                form
+                    fieldset
+                        legend Legend
+                        .form-group
+                            label(for='exampleInputEmail') Email address
+                            input#exampleInputEmail.form-control(type='text', placeholder='Enter email')
+                        .form-group
+                            label(for='exampleInputPassword') Password
+                            input#exampleInputPassword.form-control(type='password', placeholder='Password')
+                        .form-group
+                            label(for='exampleInputFile') File input
+                            input#exampleInputFile(type='file')
+                            p.help-block Example block-level help text here.
+                        .checkbox
+                            label
+                                input(type='checkbox')
+                                | Check me out
+                        button.btn.btn-default(type='submit') Submit
+                hr
+                form.form-inline
+                    input.form-control(type='text', placeholder='Email', style='width: 200px;')
+                    input.form-control(type='password', placeholder='Password', style='width: 200px;')
+                    .checkbox
+                        label
+                            input(type='checkbox')
+                            | Remember me
+                    button.btn.btn-default(type='submit') Sign in
+                hr
+                form.form-horizontal
+                    .form-group
+                        label.col-lg-2.control-label(for='inputEmail') Email
+                        .col-lg-10
+                            input#inputEmail.form-control(type='text', placeholder='Email')
+                    .form-group.has-warning
+                        label.col-lg-2.control-label(for='inputEmail') Email
+                        .col-lg-10
+                            input#inputEmail.form-control(type='text', placeholder='Email')
+                    .form-group.has-error
+                        label.col-lg-2.control-label(for='inputEmail') Email
+                        .col-lg-10
+                            input#inputEmail.form-control(type='text', placeholder='Email')
+                    .form-group.has-success
+                        label.col-lg-2.control-label(for='inputEmail') Email
+                        .col-lg-10
+                            input#inputEmail.form-control(type='text', placeholder='Email')
+                    .form-group
+                        label.col-lg-2.control-label(for='inputPassword') Password
+                        .col-lg-10
+                            input#inputPassword.form-control(type='password', placeholder='Password')
+                            .checkbox
+                                label
+                                    input(type='checkbox')
+                                    | Remember me
+                            button.btn.btn-default(type='submit') Sign in
+
+        #buttons.card
+            .card-header
+                | Buttons
+            .card-block
+                p
+                    button.btn.btn-lg.btn-default(type='button') Default Lg
+                    button.btn.btn-lg.btn-primary(type='button') Primary
+                    button.btn.btn-lg.btn-success(type='button') Success
+                    button.btn.btn-lg.btn-info(type='button') Info
+                    button.btn.btn-lg.btn-warning(type='button') Warning
+                    button.btn.btn-lg.btn-danger(type='button') Danger
+                    button.btn.btn-lg.btn-link(type='button') Link
+                p
+                    button.btn.btn-default(type='button') Default 
+                    button.btn.btn-primary(type='button') Primary
+                    button.btn.btn-success(type='button') Success
+                    button.btn.btn-info(type='button') Info
+                    button.btn.btn-warning(type='button') Warning
+                    button.btn.btn-danger(type='button') Danger
+                    button.btn.btn-link(type='button') Link
+                p
+                    button.btn.btn-sm.btn-default(type='button') Default Sm
+                    button.btn.btn-sm.btn-primary(type='button') Primary
+                    button.btn.btn-sm.btn-success(type='button') Success
+                    button.btn.btn-sm.btn-info(type='button') Info
+                    button.btn.btn-sm.btn-warning(type='button') Warning
+                    button.btn.btn-sm.btn-danger(type='button') Danger
+                    button.btn.btn-sm.btn-link(type='button') Link
+    
+        
+

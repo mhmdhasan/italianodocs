@@ -1,0 +1,36 @@
+{
+  "name": "Bootstrap(ious) 4 Boilerplate",
+  "version": "0.1",
+  "description": "",
+  "homepage": "",
+  "bugs": "",
+  "keywords": [],
+  "contributors": [
+    "Ondrej Svestka <hello@bootstrapious.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "del": "^2.2.2",
+    "gulp": "~3.9",
+    "gulp-cached": "^1.1.0",
+    "gulp-changed": "^1.3.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-jade": "^1.1.0",
+    "gulp-jade-inheritance": "^0.5.5",
+    "gulp-less": "^3.2.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-pug": "^3.1.0",
+    "gulp-sass": "^2.3.2",
+    "run-sequence": "^1.2.2"
+  },
+  "scripts": {
+    "start": "gulp & open dist/index.html"
+  }
+}

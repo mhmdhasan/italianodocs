@@ -1,0 +1,23 @@
+doctype
+html
+  block vars
+    - var enhancedForm = false
+    - var clientZone = false
+  head
+    include head
+
+  body
+
+    include navbar
+
+    block content
+
+    include footer
+
+    if (locals.styleSwitcher)
+      include style-switcher
+
+    include scripts
+
+    include analytics
+

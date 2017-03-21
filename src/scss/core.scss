@@ -1,0 +1,28 @@
+
+/* 
+========================================= 
+========================================= 
+
+Bootstrapious Boilerplate Template
+
+========================================= 
+========================================= */
+
+
+// variables-custom.scss - to change colour variant, rounded corners, etc.
+@import "variables-custom";
+// bootstrap mixins
+@import "mixins";
+// custom mixins
+@import "mixins-custom";
+// general styling
+@import "general"; 
+// demo styling
+@import "demo";
+
+// bootstrap base stylesheet overrides
+@import "theme"; 
+
+
+
+

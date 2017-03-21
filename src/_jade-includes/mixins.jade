@@ -1,0 +1,33 @@
+mixin product(val)
+    // product
+    .col-md-4.col-sm-6
+        .product 
+            .image
+                a(href="detail.html")
+                    img.img-responsive(src="#{val.image}", alt="")
+                .quick-view-button
+                    a.btn.btn-default.btn-sm(href="#",data-toggle="modal",data-target="#product-quick-view-modal") Quick view
+            .text
+                p.brand
+                    a(href="#") #{val.brand}
+                h3 
+                    a(href="detail.html") #{val.name}
+                p.price #{val.price}
+    // /product
+
+mixin productsmall(val)
+    // product
+    .col-md-3.col-sm-6
+        .product 
+            .image
+                a(href="detail.html")
+                    img.img-responsive(src="#{val.image}", alt="")
+                .quick-view-button
+                    a.btn.btn-default.btn-sm(href="#",data-toggle="modal",data-target="#product-quick-view-modal") Quick view
+            .text
+                p.brand
+                    a(href="#") #{val.brand}
+                h3 
+                    a(href="detail.html") #{val.name}
+                p.price #{val.price}
+    // /product
