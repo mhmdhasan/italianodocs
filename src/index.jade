@@ -95,7 +95,23 @@ block content
                         p.text-warning Warning color paragraph.
                         p.text-danger Danger color paragraph.
                         p.text-info Info color paragraph.
-                        p.text-success Success color paragraph.
+                        p.text-primary Primary color paragraph.
+
+                        nav(aria-label='...')
+                            ul.pagination
+                                li.page-item.disabled
+                                    span.page-link Previous
+                                li.page-item
+                                    a.page-link(href='#') 1
+                                li.page-item.active
+                                    span.page-link
+                                        | 2
+                                        span.sr-only (current)
+                                li.page-item
+                                    a.page-link(href='#') 3
+                                li.page-item
+                                    a.page-link(href='#') Next
+
                         p
                             small
                                 | This is text in a 
