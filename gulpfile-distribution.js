@@ -26,7 +26,7 @@ var distMainDir = 'distribution/'
 var distStyleDir = 'distribution/css/'
 
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt']
+var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'icons-reference/**']
 
 
 var config = {
@@ -37,7 +37,7 @@ var config = {
         compress: false
     },
     sass: {
-        outputStyle: 'nested',
+        outputStyle: 'expanded',
         includePaths: ['src/scss', 'src/scss/modules']
     },
     htmlmin: {

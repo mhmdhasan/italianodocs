@@ -8,6 +8,7 @@ var gulpif = require('gulp-if');
 var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
+var wait = require('gulp-wait');
 
 var sass = require('gulp-sass');
 var less = require('gulp-less');
@@ -74,6 +75,7 @@ gulp.task('less', function () {
 
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
+        .pipe(wait(400))
         .pipe(sass(config.sass).on('error', sass.logError))
         .pipe(gulp.dest(distStyleDir))
         .pipe(bs.reload({ stream: true }));
