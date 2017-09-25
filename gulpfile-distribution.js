@@ -9,6 +9,7 @@ var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
 var runSequence = require('run-sequence');
+var imagemin = require('gulp-imagemin');
 
 
 var sass = require('gulp-sass');
@@ -25,8 +26,11 @@ var srcSassFiles = 'src/scss/style.*.scss'
 var distMainDir = 'distribution/'
 var distStyleDir = 'distribution/css/'
 
+var srcImageFiles = 'src/img/**'
+var distImageDir = 'distribution/img/'
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'icons-reference/**']
+
+var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'icons-reference/**']
 
 
 var config = {
@@ -82,6 +86,12 @@ gulp.task('sass', function () {
         .pipe(bs.reload({ stream: true }));
 });
 
+gulp.task('images', function () {
+    return gulp.src(srcImageFiles)
+        .pipe(imagemin())
+        .pipe(gulp.dest(distImageDir))
+});
+
 gulp.task('jade', function () {
     return gulp.src(srcMarkupFiles)
 
@@ -121,7 +131,7 @@ gulp.task('copy', function () {
 
 gulp.task('build', function () {
     runSequence('clean',
-        ['jade', 'sass', 'copy']
+    ['jade', 'sass', 'copy', 'images']
     );
 });
 

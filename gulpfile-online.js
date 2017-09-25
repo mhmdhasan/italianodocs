@@ -9,6 +9,7 @@ var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
 var runSequence = require('run-sequence');
+var imagemin = require('gulp-imagemin');
 
 
 var sass = require('gulp-sass');
@@ -25,9 +26,11 @@ var srcSassFiles = 'src/scss/style.*.scss'
 var distMainDir = 'online/'
 var distStyleDir = 'online/css/'
 
+var srcImageFiles = 'src/img/**'
+var distImageDir = 'online/img/'
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
 
+var copy = ['js/**', 'css/**', 'fonts/**', 'favicon.png']
 
 var config = {
     browserSync: {
@@ -39,7 +42,7 @@ var config = {
     sass: {
         outputStyle: 'compressed',
         includePaths: ['src/scss', 'src/scss/modules']
-    },    
+    },
     htmlmin: {
         enabled: false,
         collapseWhitespace: true,
@@ -70,9 +73,9 @@ gulp.task('clean', function () {
 
 gulp.task('less', function () {
     return gulp.src(srcLessFiles)
-            .pipe(less(config.less))
-            .pipe(gulp.dest(distStyleDir))
-            .pipe(bs.reload({stream: true}));
+        .pipe(less(config.less))
+        .pipe(gulp.dest(distStyleDir))
+        .pipe(bs.reload({ stream: true }));
 });
 
 gulp.task('sass', function () {
@@ -82,53 +85,59 @@ gulp.task('sass', function () {
         .pipe(bs.reload({ stream: true }));
 });
 
+gulp.task('images', function () {
+    return gulp.src(srcImageFiles)
+        .pipe(imagemin())
+        .pipe(gulp.dest(distImageDir))
+});
+
 gulp.task('jade', function () {
     return gulp.src(srcMarkupFiles)
 
-            //only pass unchanged *main* files and *all* the partials
-            .pipe(changed(distMainDir, {extension: '.html'}))
+        //only pass unchanged *main* files and *all* the partials
+        .pipe(changed(distMainDir, { extension: '.html' }))
 
-            //filter out unchanged partials, but it only works when watching
-            .pipe(gulpif(global.isWatching, cached('jade')))
+        //filter out unchanged partials, but it only works when watching
+        .pipe(gulpif(global.isWatching, cached('jade')))
 
-            //find files that depend on the files that have changed
-            .pipe(jadeInheritance({basedir: 'src'}))
+        //find files that depend on the files that have changed
+        .pipe(jadeInheritance({ basedir: 'src' }))
 
-            //filter out partials (folders and files starting with "_" )
-            .pipe(filter(function (file) {
-                return !/\/_/.test(file.path) && !/^_/.test(file.relative);
-            }))
+        //filter out partials (folders and files starting with "_" )
+        .pipe(filter(function (file) {
+            return !/\/_/.test(file.path) && !/^_/.test(file.relative);
+        }))
 
-            //process jade templates
-            .pipe(jade({
-                pretty: true,
-                locals: config.jade.locals
-            }))
+        //process jade templates
+        .pipe(jade({
+            pretty: true,
+            locals: config.jade.locals
+        }))
 
-            //save all the files
-            .pipe(gulp.dest(distMainDir));
+        //save all the files
+        .pipe(gulp.dest(distMainDir));
 
 });
 
 gulp.task('copy', function () {
     return getFoldersSrc('src', copy)
-            .pipe(changed(distMainDir))
-            //save all the files
-            .pipe(gulp.dest(distMainDir));
+        .pipe(changed(distMainDir))
+        //save all the files
+        .pipe(gulp.dest(distMainDir));
 
 });
 
 
 gulp.task('build', function () {
     runSequence('clean',
-        ['jade', 'sass', 'copy']
+        ['jade', 'sass', 'copy', 'images']
     );
 });
 
 var getFoldersSrc = function (base, folders) {
     return gulp.src(folders.map(function (item) {
         return path.join(base, item);
-    }), {base: base});
+    }), { base: base });
 };
 
 var getFolders = function (base, folders) {
