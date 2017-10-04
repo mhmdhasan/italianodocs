@@ -11,6 +11,8 @@ var del = require('del');
 var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
 var autoprefixer = require('gulp-autoprefixer');
+var npmDist = require('gulp-npm-dist');
+var rename = require('gulp-rename');
 
 var sass = require('gulp-sass');
 var less = require('gulp-less');
@@ -28,6 +30,7 @@ var distStyleDir = 'distribution/css/'
 
 var srcImageFiles = 'src/img/**'
 var distImageDir = 'distribution/img/'
+var distVendorDir = 'dist/vendor/'
 
 
 var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
@@ -131,10 +134,18 @@ gulp.task('copy', function () {
 
 });
 
+gulp.task('vendor', function () {
+    gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
+        }))
+        .pipe(gulp.dest(distVendorDir));
+});
+
 
 gulp.task('build', function () {
     runSequence('clean',
-    ['jade', 'sass', 'copy', 'images']
+        ['vendor', 'jade', 'sass', 'copy', 'images']
     );
 });
 

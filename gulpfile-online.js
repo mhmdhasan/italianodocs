@@ -12,7 +12,8 @@ var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
 var cdnizer = require("gulp-cdnizer");
 var autoprefixer = require('gulp-autoprefixer');
-
+var npmDist = require('gulp-npm-dist');
+var rename = require('gulp-rename');
 
 var sass = require('gulp-sass');
 var less = require('gulp-less');
@@ -30,6 +31,7 @@ var distStyleDir = 'online/css/'
 
 var srcImageFiles = 'src/img/**'
 var distImageDir = 'online/img/'
+var distVendorDir = 'online/vendor/'
 
 
 var copy = ['js/**', 'css/**', 'fonts/**', 'favicon.png']
@@ -44,7 +46,7 @@ var config = {
     cdnizer: {
         enabled: false,
         defaultCDNBase: "https://d32d8xzgnjxuvk.cloudfront.net/places/1-0",
-        files: ['img/*', 'js/*', 'css/*']
+        files: ['img/*', 'js/*', 'css/*', 'vendor/**']
     },
     less: {
         compress: true
@@ -133,10 +135,18 @@ gulp.task('copy', function () {
 
 });
 
+gulp.task('vendor', function () {
+    gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
+        }))
+        .pipe(gulp.dest(distVendorDir));
+});
+
 
 gulp.task('build', function () {
     runSequence('clean',
-        ['jade', 'sass', 'copy', 'images']
+        ['vendor', 'jade', 'sass', 'copy', 'images']
     );
 });
 

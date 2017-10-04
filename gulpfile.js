@@ -9,6 +9,8 @@ var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
 var wait = require('gulp-wait');
+var npmDist = require('gulp-npm-dist');
+var rename = require('gulp-rename');
 
 var sass = require('gulp-sass');
 var less = require('gulp-less');
@@ -23,6 +25,7 @@ var srcSassFiles = 'src/scss/style.default.scss'
 
 var distMainDir = 'dist/'
 var distStyleDir = 'dist/css/'
+var distVendorDir = 'dist/vendor/'
 
 var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
 
@@ -117,6 +120,13 @@ gulp.task('copy', function () {
 
 });
 
+gulp.task('vendor', function () {
+    gulp.src(npmDist({copyUnminified: true}), { base: './node_modules/' })
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, ''); 
+        }))
+        .pipe(gulp.dest(distVendorDir));
+});
 
 gulp.task('jade-watch', ['jade'], function (done) {
     bs.reload();
@@ -130,7 +140,7 @@ gulp.task('set-watch', function () {
 });
 
 
-gulp.task('watch', ['set-watch', 'jade', 'browser-sync', 'copy'], function () {
+gulp.task('watch', ['set-watch', 'jade', 'browser-sync', 'copy', 'vendor'], function () {
 
     gulp.watch("src/scss/**/*.scss", ['sass']);
     gulp.watch("src/**/*.jade", ['jade-watch']);
