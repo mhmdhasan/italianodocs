@@ -10,7 +10,7 @@ var filter = require('gulp-filter');
 var del = require('del');
 var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
-
+var autoprefixer = require('gulp-autoprefixer');
 
 var sass = require('gulp-sass');
 var less = require('gulp-less');
@@ -30,10 +30,13 @@ var srcImageFiles = 'src/img/**'
 var distImageDir = 'distribution/img/'
 
 
-var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'icons-reference/**']
+var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
 
 
 var config = {
+    autoprefixer: {
+        cascade: false
+    },
     browserSync: {
         enabled: true
     },
@@ -82,8 +85,8 @@ gulp.task('less', function () {
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
         .pipe(sass(config.sass).on('error', sass.logError))
-        .pipe(gulp.dest(distStyleDir))
-        .pipe(bs.reload({ stream: true }));
+        .pipe(autoprefixer(config.autoprefixer))
+        .pipe(gulp.dest(distStyleDir));
 });
 
 gulp.task('images', function () {

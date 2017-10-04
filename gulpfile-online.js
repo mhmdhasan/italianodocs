@@ -10,6 +10,8 @@ var filter = require('gulp-filter');
 var del = require('del');
 var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
+var cdnizer = require("gulp-cdnizer");
+var autoprefixer = require('gulp-autoprefixer');
 
 
 var sass = require('gulp-sass');
@@ -33,8 +35,16 @@ var distImageDir = 'online/img/'
 var copy = ['js/**', 'css/**', 'fonts/**', 'favicon.png']
 
 var config = {
+    autoprefixer: {
+        cascade: false
+    },
     browserSync: {
         enabled: true
+    },
+    cdnizer: {
+        enabled: false,
+        defaultCDNBase: "https://d32d8xzgnjxuvk.cloudfront.net/places/1-0",
+        files: ['img/*', 'js/*', 'css/*']
     },
     less: {
         compress: true
@@ -81,8 +91,8 @@ gulp.task('less', function () {
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
         .pipe(sass(config.sass).on('error', sass.logError))
-        .pipe(gulp.dest(distStyleDir))
-        .pipe(bs.reload({ stream: true }));
+        .pipe(autoprefixer(config.autoprefixer))
+        .pipe(gulp.dest(distStyleDir));
 });
 
 gulp.task('images', function () {
@@ -97,12 +107,6 @@ gulp.task('jade', function () {
         //only pass unchanged *main* files and *all* the partials
         .pipe(changed(distMainDir, { extension: '.html' }))
 
-        //filter out unchanged partials, but it only works when watching
-        .pipe(gulpif(global.isWatching, cached('jade')))
-
-        //find files that depend on the files that have changed
-        .pipe(jadeInheritance({ basedir: 'src' }))
-
         //filter out partials (folders and files starting with "_" )
         .pipe(filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
@@ -113,6 +117,8 @@ gulp.task('jade', function () {
             pretty: true,
             locals: config.jade.locals
         }))
+
+        .pipe(gulpif(config.cdnizer.enabled, cdnizer(config.cdnizer)))
 
         //save all the files
         .pipe(gulp.dest(distMainDir));
