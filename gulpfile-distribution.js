@@ -30,7 +30,7 @@ var distStyleDir = 'distribution/css/'
 
 var srcImageFiles = 'src/img/**'
 var distImageDir = 'distribution/img/'
-var distVendorDir = 'dist/vendor/'
+var distVendorDir = 'distribution/vendor/'
 
 
 var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
