@@ -1,7 +1,5 @@
 // Transition Mixin
 @mixin ondrTransition($duration: 0.2s, $ease: ease-out) {
-    -webkit-transition: all $duration $ease;
-    -moz-transition: all $duration $ease;
     transition: all $duration $ease;
 }
 
@@ -12,8 +10,6 @@
 
 // Rounded Mixin
 @mixin rounded($radius: 5px) {
-    -moz-border-radius: $radius;
-    -webkit-border-radius: $radius;
     border-radius: $radius;
 }
 
@@ -32,19 +28,11 @@
 // Horizontal gradient Mixin
 @mixin horizontal-gradient($startColor: #eee, $endColor: white) {
     background-color: $startColor;
-    background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
-    background-image: -webkit-linear-gradient(left, $startColor, $endColor);
-    background-image: -moz-linear-gradient(left, $startColor, $endColor);
-    background-image: -ms-linear-gradient(left, $startColor, $endColor);
-    background-image: -o-linear-gradient(left, $startColor, $endColor);
-    background-image: linear-gradient(left, $startColor, $endColor);
+    background-image: linear-gradient(to right, $startColor, $endColor);
 }
 
 // Gradient Mixin
 @mixin gradient($startColor: rgb(184,205,6), $endColor: rgb(12,224,184)) {
-    background-image: -moz-linear-gradient( -18deg, $startColor 0%, $endColor 100%);
-    background-image: -webkit-linear-gradient( -18deg, $startColor 0%, $endColor 100%);
-    background-image: -ms-linear-gradient( -18deg, $startColor 0%, $endColor 100%);
     background-image: linear-gradient( -18deg, $startColor 0%, $endColor 100%);
 }
 

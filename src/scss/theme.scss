@@ -346,3 +346,24 @@ mark,
 .pagination-sm {
     @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
 }
+
+/*
+* 5. UTILITIES
+*/
+
+@each $color,
+$value in $theme-colors {
+    @include bg-variant('.bg-#{$color}', $value);
+}
+
+@each $color,
+$value in $theme-colors {
+    .border-#{$color} {
+        border-color: $value !important;
+    }
+}
+
+@each $color,
+$value in $theme-colors {
+    @include text-emphasis-variant('.text-#{$color}', $value);
+}
