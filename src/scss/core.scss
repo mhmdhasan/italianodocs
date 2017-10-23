@@ -10,17 +10,17 @@ Bootstrapious Boilerplate Template
 
 
 // functions.scss - Bootstrap functions 
-@import "functions";
+@import "modules/functions";
 // variables-custom.scss - to change colour variant, rounded corners, etc.
-@import "variables-custom";
+@import "modules/variables-custom";
 // bootstrap mixins
-@import "mixins";
+@import "modules/mixins";
 // custom mixins
-@import "mixins-custom";
+@import "modules/mixins-custom";
 // general styling
-@import "general"; 
+@import "modules/general"; 
 // demo styling
-@import "demo";
+@import "modules/demo";
 
 // bootstrap base stylesheet overrides
 @import "theme"; 
