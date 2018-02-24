@@ -109,10 +109,8 @@ gulp.task('jade', function () {
         //only pass unchanged *main* files and *all* the partials
         .pipe(changed(distMainDir, { extension: '.html' }))
 
-        //filter out partials (folders and files starting with "_" )
-        .pipe(filter(function (file) {
-            return !/\/_/.test(file.path) && !/^_/.test(file.relative);
-        }))
+        //filter out partials (in jade includes)
+        .pipe(filter(['**', '!src/_jade-includes/*']))
 
         //process jade templates
         .pipe(jade({
