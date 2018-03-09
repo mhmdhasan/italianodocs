@@ -182,7 +182,7 @@ block content
                             label
                                 input(type='checkbox')
                                 | Check me out
-                        button.btn.btn-default(type='submit') Submit
+                        button.btn.btn-primary(type='submit') Submit
                 hr
                 form.form-inline
                     input.form-control(type='text', placeholder='Email', style='width: 200px;')
@@ -191,41 +191,52 @@ block content
                         label
                             input(type='checkbox')
                             | Remember me
-                    button.btn.btn-default(type='submit') Sign in
+                    button.btn.btn-secondary(type='submit') Sign in
                 hr
-                form.form-horizontal
-                    .form-group
-                        label.col-lg-2.control-label(for='inputEmail') Email
-                        .col-lg-10
-                            input#inputEmail.form-control(type='text', placeholder='Email')
-                    .form-group.has-warning
-                        label.col-lg-2.control-label(for='inputEmail') Email
-                        .col-lg-10
-                            input#inputEmail.form-control(type='text', placeholder='Email')
-                    .form-group.has-error
-                        label.col-lg-2.control-label(for='inputEmail') Email
-                        .col-lg-10
-                            input#inputEmail.form-control(type='text', placeholder='Email')
-                    .form-group.has-success
-                        label.col-lg-2.control-label(for='inputEmail') Email
-                        .col-lg-10
-                            input#inputEmail.form-control(type='text', placeholder='Email')
-                    .form-group
-                        label.col-lg-2.control-label(for='inputPassword') Password
-                        .col-lg-10
-                            input#inputPassword.form-control(type='password', placeholder='Password')
-                            .checkbox
-                                label
-                                    input(type='checkbox')
-                                    | Remember me
-                            button.btn.btn-default(type='submit') Sign in
+                h4.mb-5 Horizontal form
+                form
+                    .form-group.row
+                        label.col-sm-2.col-form-label(for='inputEmail3') Email
+                        .col-sm-10
+                            input#inputEmail3.form-control(type='email', placeholder='Email')
+                    .form-group.row
+                        label.col-sm-2.col-form-label(for='inputPassword3') Password
+                        .col-sm-10
+                            input#inputPassword3.form-control(type='password', placeholder='Password')
+                    fieldset.form-group
+                        .row
+                            legend.col-form-label.col-sm-2.pt-0 Radios
+                            .col-sm-10
+                                .form-check
+                                    input#gridRadios1.form-check-input(type='radio', name='gridRadios', value='option1', checked='')
+                                    label.form-check-label(for='gridRadios1')
+                                        | First radio
+                                .form-check
+                                    input#gridRadios2.form-check-input(type='radio', name='gridRadios', value='option2')
+                                    label.form-check-label(for='gridRadios2')
+                                        | Second radio
+                                .form-check.disabled
+                                    input#gridRadios3.form-check-input(type='radio', name='gridRadios', value='option3', disabled='')
+                                    label.form-check-label(for='gridRadios3')
+                                        | Third disabled radio
+                    .form-group.row
+                        .col-sm-2 Checkbox
+                        .col-sm-10
+                            .form-check
+                                input#gridCheck1.form-check-input(type='checkbox')
+                                label.form-check-label(for='gridCheck1')
+                                    | Example checkbox
+                    .form-group.row
+                        .col-sm-10
+                            button.btn.btn-primary(type='submit') Sign in
+
 
         #buttons.card
             .card-header
                 | Buttons
             .card-body
                 p
-                    button.btn.btn-lg.btn-default(type='button') Default Lg
+                    button.btn.btn-lg.btn-secondary(type='button') Default Lg
                     button.btn.btn-lg.btn-primary(type='button') Primary
                     button.btn.btn-lg.btn-success(type='button') Success
                     button.btn.btn-lg.btn-info(type='button') Info
@@ -233,7 +244,7 @@ block content
                     button.btn.btn-lg.btn-danger(type='button') Danger
                     button.btn.btn-lg.btn-link(type='button') Link
                 p
-                    button.btn.btn-default(type='button') Default 
+                    button.btn.btn-secondary(type='button') Default 
                     button.btn.btn-primary(type='button') Primary
                     button.btn.btn-success(type='button') Success
                     button.btn.btn-info(type='button') Info
@@ -241,7 +252,7 @@ block content
                     button.btn.btn-danger(type='button') Danger
                     button.btn.btn-link(type='button') Link
                 p
-                    button.btn.btn-sm.btn-default(type='button') Default Sm
+                    button.btn.btn-sm.btn-secondary(type='button') Default Sm
                     button.btn.btn-sm.btn-primary(type='button') Primary
                     button.btn.btn-sm.btn-success(type='button') Success
                     button.btn.btn-sm.btn-info(type='button') Info

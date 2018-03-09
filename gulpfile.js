@@ -13,14 +13,14 @@ var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
 
 var sass = require('gulp-sass');
-var less = require('gulp-less');
+
 
 var bs = require('browser-sync').create();
 
 var path = require('path');
 
 var srcMarkupFiles = 'src/**/*.jade'
-var srcLessFiles = 'src/styles/style.default.less'
+
 var srcSassFiles = 'src/scss/style.default.scss'
 
 var distMainDir = 'dist/'
@@ -33,9 +33,6 @@ var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
 var config = {
     browserSync: {
         enabled: true
-    },
-    less: {
-        compress: false
     },
     sass: {
         outputStyle: 'nested',
@@ -66,14 +63,6 @@ gulp.task('clean', function () {
     return del([
         distMainDir + '**/*'
     ]);
-});
-
-
-gulp.task('less', function () {
-    return gulp.src(srcLessFiles)
-        .pipe(less(config.less))
-        .pipe(gulp.dest(distStyleDir))
-        .pipe(bs.reload({ stream: true }));
 });
 
 gulp.task('sass', function () {

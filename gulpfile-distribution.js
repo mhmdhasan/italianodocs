@@ -15,14 +15,12 @@ var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
 
 var sass = require('gulp-sass');
-var less = require('gulp-less');
 
 var bs = require('browser-sync').create();
 
 var path = require('path');
 
 var srcMarkupFiles = 'src/**/*.jade'
-var srcLessFiles = 'src/styles/style.*.less'
 var srcSassFiles = 'src/scss/style.*.scss'
 
 var distMainDir = 'distribution/'
@@ -43,9 +41,6 @@ var config = {
     browserSync: {
         enabled: true
     },
-    less: {
-        compress: false
-    },
     sass: {
         outputStyle: 'expanded',
         includePaths: ['src/scss', 'src/scss/modules']
@@ -63,7 +58,7 @@ var config = {
     }
 }
 
-gulp.task('browser-sync', ['less'], function () {
+gulp.task('browser-sync', function () {
     bs.init({
         server: {
             baseDir: distMainDir
@@ -77,13 +72,6 @@ gulp.task('clean', function () {
     ]);
 });
 
-
-gulp.task('less', function () {
-    return gulp.src(srcLessFiles)
-        .pipe(less(config.less))
-        .pipe(gulp.dest(distStyleDir))
-        .pipe(bs.reload({ stream: true }));
-});
 
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
