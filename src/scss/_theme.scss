@@ -1,7 +1,21 @@
 /* ========================================= 
-   THEMING OF BOOTSTRAP COMPONENTS           
-   ========================================= */
+   
+      THEMING OF THE BOOTSTRAP COMPONENTS           
 
+   ========================================= 
+   
+    1 - NAVBAR
+    2 - BUTTONS
+    3 - TYPE
+    4 - PAGINATION
+    5 - UTILITIES
+    6 - FORMS
+    7 - CODE
+    8 - NAV
+    9 - CARD
+    10 - DROPDOWNS
+   
+*/
 
 /*
  * 1. NAVBAR
@@ -101,7 +115,6 @@
     }
 }
 
-
 /*
  * 2. BUTTONS
  */
@@ -114,7 +127,7 @@
     &:focus,
     &.focus {
         box-shadow: $btn-focus-box-shadow;
-    } // Disabled comes first so active can properly restyle
+    }
     &.disabled,
     &:disabled {
         opacity: $btn-disabled-opacity;
@@ -175,7 +188,6 @@ $value in $theme-colors {
 .btn-sm {
     @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
 }
-
 
 /*
  * 3. TYPE  
@@ -319,7 +331,6 @@ mark,
 }
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
-
 /*
  * 4. PAGINATION
  */
@@ -372,7 +383,6 @@ mark,
     @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
 }
 
-
 /*
 * 5. UTILITIES
 */
@@ -400,7 +410,6 @@ $value in $theme-colors {
         @include badge-variant($value);
     }
 }
-
 
 /*
   * 6. FORMS
@@ -473,6 +482,78 @@ select.form-control-lg {
 
 @include form-validation-state("valid", $form-feedback-valid-color);
 @include form-validation-state("invalid", $form-feedback-invalid-color); // Inline forms
+.custom-control-input {
+    &:checked~.custom-control-label::before {
+        color: $custom-control-indicator-checked-color;
+        @include gradient-bg($custom-control-indicator-checked-bg);
+        @include box-shadow($custom-control-indicator-checked-box-shadow);
+    }
+    &:focus~.custom-control-label::before {
+        box-shadow: $custom-control-indicator-focus-box-shadow;
+    }
+    &:active~.custom-control-label::before {
+        color: $custom-control-indicator-active-color;
+        background-color: $custom-control-indicator-active-bg;
+        @include box-shadow($custom-control-indicator-active-box-shadow);
+    }
+    &:disabled {
+        ~.custom-control-label {
+            color: $custom-control-label-disabled-color;
+            &::before {
+                background-color: $custom-control-indicator-disabled-bg;
+            }
+        }
+    }
+}
+
+.custom-checkbox {
+    .custom-control-label::before {
+        @include border-radius($custom-checkbox-indicator-border-radius);
+    }
+    .custom-control-input:checked~.custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+        }
+        &::after {
+            background-image: $custom-checkbox-indicator-icon-checked;
+        }
+    }
+    .custom-control-input:indeterminate~.custom-control-label {
+        &::before {
+            @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
+            @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
+        }
+        &::after {
+            background-image: $custom-checkbox-indicator-icon-indeterminate;
+        }
+    }
+    .custom-control-input:disabled {
+        &:checked~.custom-control-label::before {
+            background-color: $custom-control-indicator-checked-disabled-bg;
+        }
+        &:indeterminate~.custom-control-label::before {
+            background-color: $custom-control-indicator-checked-disabled-bg;
+        }
+    }
+} 
+.custom-radio {
+    .custom-control-label::before {
+        border-radius: $custom-radio-indicator-border-radius;
+    }
+    .custom-control-input:checked~.custom-control-label {
+        &::before {
+            @include gradient-bg($custom-control-indicator-checked-bg);
+        }
+        &::after {
+            background-image: $custom-radio-indicator-icon-checked;
+        }
+    }
+    .custom-control-input:disabled {
+        &:checked~.custom-control-label::before {
+            background-color: $custom-control-indicator-checked-disabled-bg;
+        }
+    }
+}
 
 /*
 * 7.CODE
@@ -482,7 +563,6 @@ code {
     font-size: $code-font-size;
     color: $code-color;
 }
-
 
 /*
 * 8. NAV
@@ -530,7 +610,6 @@ code {
         background-color: $nav-pills-link-active-bg;
     }
 }
-
 
 /*
 * 9. CARD
@@ -634,6 +713,44 @@ code {
         .card {
             margin-right: $card-deck-margin;
             margin-left: $card-deck-margin;
+        }
+    }
+}
+
+/*
+* 10. DROPDOWNS
+*/
+
+.dropdown-menu {
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    margin: $dropdown-spacer 0 0; // override default ul
+    font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
+    color: $body-color;
+    background-color: $dropdown-bg;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    @include border-radius($dropdown-border-radius);
+    @include box-shadow($dropdown-box-shadow);
+}
+
+.dropdown-item {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    font-weight: $font-weight-normal;
+    color: $dropdown-link-color;
+    @include hover-focus {
+        color: $dropdown-link-hover-color;
+        @include gradient-bg($dropdown-link-hover-bg);
+    }
+    &.active,
+    &:active {
+        color: $dropdown-link-active-color;
+        @include gradient-bg($dropdown-link-active-bg);
+    }
+    &.disabled,
+    &:disabled {
+        color: $dropdown-link-disabled-color;
+        @if $enable-gradients {
+            background-image: none;
         }
     }
 }
