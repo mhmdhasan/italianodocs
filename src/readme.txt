@@ -1,36 +1,50 @@
 ################################################################################################
 
-Readme for the Ads - Bootstrap Classifieds Theme by Ondrej Svestka - https://ondrejsvestka.cz
+Readme for Bootstrapious Boilerplate by Bootstrapious - https://bootstrapious.com
 
 ################################################################################################
 
 Hi,
 
-thank you for downloading. I hope you wil enjoy working with the theme.
+thank you for downloading. Have fun and tell your friends about us ;)
 
-Ondrej
+Ondrej, Bootstrapious
 
+---------------------
+ CSS
+---------------------
 
-CSS
-----------
+The theme stylesheet is css/style.default.css. If you want to make any changes, 
+you can do it here or better to override it in custom.css so you can update the original theme stylesheet if an updated is released. 
+Changing to another colour variant, is just a matter of replacing css/style.default.css with css/style.pink.css in index.html.
 
-The theme stylesheet is css/style.default.css. If you want to make any changes, you can do it here or better to override it in custom.css so you can update the original theme stylesheet if an updated is released. Colour variants are named accordingly, to use different colour variant, just replace link to the style.default.css with e.g. style.pink.css.
+---------------------
+ JavaScript
+---------------------
 
-LESS
-----------
-The easies way to change theme colours, fonts and any CSS rules in general is by editing the LESS files. In the LESS directory, there is a main file style.default.less or its colour variants. In these files, we just define which of the predefined colours will be use and the rest is done by core.less file. It takes control of all the necessary module includes. 
-The modules (blog, footer, navbar, pages, etc.) are located in the modules subdirectory. 
-Most modifications can be done by configuring the theme in variables-custom.less.
+Apart from the Bootstrap JS components, the majority of JS is located in /js/front.js. 
 
-Javascript
-----------
+---------------------
+ CREDITS
+---------------------
 
-Apart from Bootstrap JS components majority of JS is located in /js/front.js. If you want to make any js settings finetuning, you can do it here.
+- Botstrap - http://getbootstrap.com
+- Font Awesome 4.7 - http://fontawesome.io/
+- more in credits.txt.
 
-Credits
----------
+---------------------
+ LICENSE CONDITIONS
+---------------------
 
-- Bootstrap 
-- Font Awesome 
-- Google Fonts
-- Owl Carousel
+You are completely free to use this template for your personal use or as a work for your client as 
+long as you keep the link at the template footer pointing to us and our partner. 
+
+If you would prefer removing the backlink from the theme footer, please donate (https://bootstrapious.com/donate) 
+to support themes' development. Suggested amount per template is $10. 
+Also, as a bonus for donors, I can provide you the SASS files for even easier template customization. 
+Drop me a line at hello@bootstrapious.com after donating.
+
+However you cannot redistribute the template nor its derivatives on the internet - neither 
+for free or commercially (e.g. selling it on template marketplace).
+
+Thank you for understanding and respecting the license conditions.
