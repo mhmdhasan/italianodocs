@@ -1,6 +1,6 @@
 {
   "name": "bootstrap_ious_4_boilerplate",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "homepage": "",
   "bugs": "",
@@ -13,12 +13,12 @@
     "url": ""
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.1.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jquery.cookie": "^1.4.1",
-    "owl.carousel": "^2.2.0",
-    "popper.js": "^1.12.9"
+    "owl.carousel": "^2.3.4",
+    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.3",
@@ -35,10 +35,9 @@
     "gulp-jade": "^1.1.0",
     "gulp-jade-inheritance": "^0.5.5",
     "gulp-load-plugins": "^1.4.0",
-    "gulp-npm-dist": "^1.0.0",
+    "gulp-npm-dist": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1",
-    "gulp-wait": "0.0.2",
+    "gulp-sass": "^4.0.1",
     "run-sequence": "^2.2"
   },
   "browserslist": [

@@ -8,7 +8,6 @@ var gulpif = require('gulp-if');
 var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
-var wait = require('gulp-wait');
 var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
 
@@ -67,7 +66,6 @@ gulp.task('clean', function () {
 
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
-        .pipe(wait(400))
         .pipe(sass(config.sass).on('error', sass.logError))
         .pipe(gulp.dest(distStyleDir))
         .pipe(bs.reload({ stream: true }));
