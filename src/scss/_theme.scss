@@ -411,6 +411,10 @@ $value in $theme-colors {
     }
 }
 
+.shadow-sm { box-shadow: $box-shadow-sm !important; }
+.shadow { box-shadow: $box-shadow !important; }
+.shadow-lg { box-shadow: $box-shadow-lg !important; }
+
 /*
   * 6. FORMS
   */
@@ -755,3 +759,4 @@ code {
         }
     }
 }
+
