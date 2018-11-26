@@ -32,7 +32,7 @@ var distImageDir = 'online/img/'
 var distVendorDir = 'online/vendor/'
 
 
-var copy = ['js/**', 'css/**', 'fonts/**', 'favicon.png']
+var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
 
 var config = {
     autoprefixer: {
@@ -43,7 +43,7 @@ var config = {
     },
     cdnizer: {
         enabled: false,
-        defaultCDNBase: "https://d32d8xzgnjxuvk.cloudfront.net/places/1-0",
+        defaultCDNBase: "https://d19m59y37dris4.cloudfront.net/places/1-0",
         files: ['img/*', 'js/*', 'css/*', 'vendor/**']
     },
     sass: {
@@ -131,7 +131,7 @@ gulp.task('vendor', function () {
 
 gulp.task('build', function () {
     runSequence('clean',
-        ['vendor', 'jade', 'sass', 'copy', 'images']
+        ['vendor', 'jade', 'sass', 'copy']
     );
 });
 

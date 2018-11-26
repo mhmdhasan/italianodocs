@@ -31,7 +31,7 @@ var distImageDir = 'distribution/img/'
 var distVendorDir = 'distribution/vendor/'
 
 
-var copy = ['js/**', 'css/**', 'scss/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
+var copy = ['js/**', 'css/**', 'scss/**', 'img/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
 
 
 var config = {
@@ -131,7 +131,7 @@ gulp.task('vendor', function () {
 
 gulp.task('build', function () {
     runSequence('clean',
-        ['vendor', 'jade', 'sass', 'copy', 'images']
+        ['vendor', 'jade', 'sass', 'copy']
     );
 });
 
