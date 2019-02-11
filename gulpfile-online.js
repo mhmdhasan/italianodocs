@@ -123,7 +123,7 @@ gulp.task('copy', function () {
 gulp.task('vendor', function () {
     gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
+            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, ''); 
         }))
         .pipe(gulp.dest(distVendorDir));
 });

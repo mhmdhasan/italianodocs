@@ -13,6 +13,9 @@ var imagemin = require('gulp-imagemin');
 var autoprefixer = require('gulp-autoprefixer');
 var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
+var cssnano = require('gulp-cssnano');
+var sourcemaps = require('gulp-sourcemaps');
+var fs = require('fs');
 
 var sass = require('gulp-sass');
 
@@ -39,7 +42,7 @@ var config = {
         cascade: false
     },
     browserSync: {
-        enabled: true
+        enabled: false
     },
     sass: {
         outputStyle: 'expanded',
@@ -75,8 +78,15 @@ gulp.task('clean', function () {
 
 gulp.task('sass', function () {
     return gulp.src(srcSassFiles)
+        .pipe(sourcemaps.init())
         .pipe(sass(config.sass).on('error', sass.logError))
         .pipe(autoprefixer(config.autoprefixer))
+        .pipe(gulp.dest(distStyleDir))
+        .pipe(cssnano())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(distStyleDir));
 });
 
@@ -123,7 +133,7 @@ gulp.task('copy', function () {
 gulp.task('vendor', function () {
     gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.replace(/\/dist/, '').replace(/\\dist/, '');
+            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, ''); 
         }))
         .pipe(gulp.dest(distVendorDir));
 });

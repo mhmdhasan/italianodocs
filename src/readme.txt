@@ -29,7 +29,7 @@ Apart from the Bootstrap JS components, the majority of JS is located in /js/fro
 ---------------------
 
 - Botstrap - http://getbootstrap.com
-- Font Awesome 4.7 - http://fontawesome.io/
+- Font Awesome - http://fontawesome.io/
 - more in credits.txt.
 
 ---------------------
