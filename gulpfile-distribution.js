@@ -8,19 +8,13 @@ var gulpif = require('gulp-if');
 var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
-var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
 var autoprefixer = require('gulp-autoprefixer');
 var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
 var cssnano = require('gulp-cssnano');
 var sourcemaps = require('gulp-sourcemaps');
-var fs = require('fs');
-
 var sass = require('gulp-sass');
-
-var bs = require('browser-sync').create();
-
 var path = require('path');
 
 var srcMarkupFiles = 'src/**/*.jade'
@@ -61,14 +55,6 @@ var config = {
     }
 }
 
-gulp.task('browser-sync', function () {
-    bs.init({
-        server: {
-            baseDir: distMainDir
-        }
-    });
-});
-
 gulp.task('clean', function () {
     return del([
         distMainDir + '**/*'
@@ -100,13 +86,17 @@ gulp.task('jade', function () {
     return gulp.src(srcMarkupFiles)
 
         //only pass unchanged *main* files and *all* the partials
-        .pipe(changed(distMainDir, { extension: '.html' }))
+        .pipe(changed(distMainDir, {
+            extension: '.html'
+        }))
 
         //filter out unchanged partials, but it only works when watching
         .pipe(gulpif(global.isWatching, cached('jade')))
 
         //find files that depend on the files that have changed
-        .pipe(jadeInheritance({ basedir: 'src' }))
+        .pipe(jadeInheritance({
+            basedir: 'src'
+        }))
 
         //filter out partials (in jade includes)
         .pipe(filter(['**', '!src/_jade-includes/*']))
@@ -131,24 +121,29 @@ gulp.task('copy', function () {
 });
 
 gulp.task('vendor', function () {
-    gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
+    return gulp.src(npmDist({
+            copyUnminified: true
+        }), {
+            base: './node_modules/'
+        })
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, ''); 
+            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, '');
         }))
         .pipe(gulp.dest(distVendorDir));
 });
 
 
-gulp.task('build', function () {
-    runSequence('clean',
-        ['vendor', 'jade', 'sass', 'copy']
-    );
-});
+gulp.task('build', gulp.series('clean',
+    gulp.parallel('vendor', 'jade', 'sass', 'copy')));
+
 
 var getFoldersSrc = function (base, folders) {
     return gulp.src(folders.map(function (item) {
         return path.join(base, item);
-    }), { base: base });
+    }), {
+        base: base,
+        allowEmpty: true
+    });
 };
 
 var getFolders = function (base, folders) {

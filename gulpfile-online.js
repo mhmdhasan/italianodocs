@@ -1,38 +1,32 @@
 var gulp = require('gulp');
 
-var jadeInheritance = require('gulp-jade-inheritance');
 var jade = require('gulp-jade');
 var changed = require('gulp-changed');
-var cached = require('gulp-cached');
 var gulpif = require('gulp-if');
-var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
-var runSequence = require('run-sequence');
 var imagemin = require('gulp-imagemin');
 var cdnizer = require("gulp-cdnizer");
 var autoprefixer = require('gulp-autoprefixer');
 var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
-
+var revAll = require("gulp-rev-all");
 var sass = require('gulp-sass');
-
-var bs = require('browser-sync').create();
-
 var path = require('path');
 
 var srcMarkupFiles = 'src/**/*.jade'
 var srcSassFiles = 'src/scss/style.*.scss'
 
-var distMainDir = 'online/'
-var distStyleDir = 'online/css/'
+var distMainDir = 'tmp/'
+var distStyleDir = 'tmp/css/'
 
 var srcImageFiles = 'src/img/**'
-var distImageDir = 'online/img/'
-var distVendorDir = 'online/vendor/'
+var distImageDir = 'tmp/img/'
+var distVendorDir = 'tmp/vendor/'
 
+var finalMainDir = 'online/'
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
+var copy = ['js/**', 'img/**', 'icons/**', 'css/**', 'fonts/**', 'favicon.png']
 
 var config = {
     autoprefixer: {
@@ -43,8 +37,11 @@ var config = {
     },
     cdnizer: {
         enabled: false,
-        defaultCDNBase: "https://d19m59y37dris4.cloudfront.net/places/1-0",
-        files: ['img/*', 'js/*', 'css/*', 'vendor/**']
+        defaultCDNBase: "",
+        files: ['img/**', 'vendor/**', 'css/**']
+    },
+    less: {
+        compress: true
     },
     sass: {
         outputStyle: 'compressed',
@@ -63,17 +60,10 @@ var config = {
     }
 }
 
-gulp.task('browser-sync', function () {
-    bs.init({
-        server: {
-            baseDir: distMainDir
-        }
-    });
-});
-
 gulp.task('clean', function () {
     return del([
-        distMainDir + '**/*'
+        distMainDir + '**/*',
+        finalMainDir + '**/*'
     ]);
 });
 
@@ -93,9 +83,6 @@ gulp.task('images', function () {
 gulp.task('jade', function () {
     return gulp.src(srcMarkupFiles)
 
-        //only pass unchanged *main* files and *all* the partials
-        .pipe(changed(distMainDir, { extension: '.html' }))
-
         //filter out partials (in jade includes)
         .pipe(filter(['**', '!src/_jade-includes/*']))
 
@@ -104,8 +91,6 @@ gulp.task('jade', function () {
             pretty: true,
             locals: config.jade.locals
         }))
-
-        .pipe(gulpif(config.cdnizer.enabled, cdnizer(config.cdnizer)))
 
         //save all the files
         .pipe(gulp.dest(distMainDir));
@@ -121,24 +106,47 @@ gulp.task('copy', function () {
 });
 
 gulp.task('vendor', function () {
-    gulp.src(npmDist({ copyUnminified: true }), { base: './node_modules/' })
+    return gulp.src(npmDist({
+            copyUnminified: true
+        }), {
+            base: './node_modules/'
+        })
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, ''); 
+            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, '');
         }))
         .pipe(gulp.dest(distVendorDir));
 });
 
+gulp.task('rev', function () {
+    return gulp.src(distMainDir + '**')
+        .pipe(revAll.revision({
+            dontRenameFile: [/^\/favicon.png$/g, ".html", /[a-z]*vendor\//g],
+            dontUpdateReference: [/^\/favicon.png$/g, ".html", /[a-z]*vendor\//g],
+        }))
+        .pipe(gulp.dest(finalMainDir));
+})
 
-gulp.task('build', function () {
-    runSequence('clean',
-        ['vendor', 'jade', 'sass', 'copy']
-    );
-});
+gulp.task('cdnize', function () {
+    return gulp.src(finalMainDir + '**/*.html')
+        .pipe(gulpif(config.cdnizer.enabled, cdnizer(config.cdnizer)))
+        .pipe(gulp.dest(finalMainDir));
+})
+
+
+gulp.task('build', gulp.series('clean', 
+    gulp.parallel('vendor', 'jade', 'sass', 'copy'), 
+    'rev',
+    'cdnize')
+);
+
 
 var getFoldersSrc = function (base, folders) {
     return gulp.src(folders.map(function (item) {
         return path.join(base, item);
-    }), { base: base });
+    }), {
+        base: base,
+        allowEmpty: true
+    });
 };
 
 var getFolders = function (base, folders) {

@@ -14,7 +14,7 @@ $("#colour").change(function () {
 
     if ($(this).val() !== '') {
 
-        var theme_csspath = 'css/style.' + $(this).val() + '.css';
+        var theme_csspath = $(this).val();
 
         alternateColour.attr("href", theme_csspath);
 
