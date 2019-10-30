@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
-var jadeInheritance = require('gulp-jade-inheritance');
-var jade = require('gulp-jade');
+var pugInheritance = require('gulp-pug-inheritance');
+var pug = require('gulp-pug');
 var changed = require('gulp-changed');
 var cached = require('gulp-cached');
 var gulpif = require('gulp-if');
@@ -13,7 +13,7 @@ var sass = require('gulp-sass');
 var bs = require('browser-sync').create();
 var path = require('path');
 
-var srcMarkupFiles = 'src/**/*.jade'
+var srcMarkupFiles = 'src/**/*.pug'
 var srcSassFiles = 'src/scss/style.default.scss'
 
 var distMainDir = 'dist/'
@@ -36,7 +36,7 @@ var config = {
         removeComments: true,
         keepClosingSlash: true
     },
-    jade: {
+    pug: {
         locals: {
             styleSwitcher: false
         }
@@ -72,7 +72,7 @@ gulp.task('sass', function () {
         }));
 });
 
-gulp.task('jade', function () {
+gulp.task('pug', function () {
     return gulp.src(srcMarkupFiles)
 
         //only pass unchanged *main* files and *all* the partials
@@ -81,20 +81,21 @@ gulp.task('jade', function () {
         }))
 
         //filter out unchanged partials, but it only works when watching
-        .pipe(gulpif(global.isWatching, cached('jade')))
+        .pipe(gulpif(global.isWatching, cached('pug')))
 
         //find files that depend on the files that have changed
-        .pipe(jadeInheritance({
-            basedir: 'src'
+        .pipe(pugInheritance({
+            basedir: 'src',
+            skip: 'node_modules'
         }))
 
-        //filter out partials (in jade includes)
-        .pipe(filter(['**', '!src/_jade-includes/*']))
+        //filter out partials (in pug includes)
+        .pipe(filter(['**', '!src/_pug-includes/*']))
 
-        //process jade templates
-        .pipe(jade({
+        //process pug templates
+        .pipe(pug({
             pretty: true,
-            locals: config.jade.locals
+            locals: config.pug.locals
         }))
 
         //save all the files
@@ -130,7 +131,7 @@ gulp.task('set-watch', function (done) {
 function watch(done) {
 
     gulp.watch("src/scss/**/*.scss", gulp.series('sass'));
-    gulp.watch("src/**/*.jade", gulp.series('jade', reload));
+    gulp.watch("src/**/*.pug", gulp.series('pug', reload));
 
     gulp.watch(getFolders('src', copy), gulp.series('copy', reload));
 
@@ -139,7 +140,7 @@ function watch(done) {
     done();
 }
 
-gulp.task('watch', gulp.series(gulp.parallel('set-watch', 'jade', 'copy', 'vendor'), serve, watch));
+gulp.task('watch', gulp.series(gulp.parallel('set-watch', 'pug', 'copy', 'vendor'), serve, watch));
 
 var getFoldersSrc = function (base, folders) {
     return gulp.src(folders.map(function (item) {

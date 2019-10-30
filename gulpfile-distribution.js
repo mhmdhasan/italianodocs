@@ -1,23 +1,19 @@
 var gulp = require('gulp');
 
-var jadeInheritance = require('gulp-jade-inheritance');
-var jade = require('gulp-jade');
+var pug = require('gulp-pug');
 var changed = require('gulp-changed');
-var cached = require('gulp-cached');
-var gulpif = require('gulp-if');
-var htmlmin = require('gulp-htmlmin')
 var filter = require('gulp-filter');
 var del = require('del');
 var imagemin = require('gulp-imagemin');
 var autoprefixer = require('gulp-autoprefixer');
 var npmDist = require('gulp-npm-dist');
 var rename = require('gulp-rename');
-var cssnano = require('gulp-cssnano');
+var cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var path = require('path');
 
-var srcMarkupFiles = 'src/**/*.jade'
+var srcMarkupFiles = 'src/**/*.pug'
 var srcSassFiles = 'src/scss/style.*.scss'
 
 var distMainDir = 'distribution/'
@@ -48,7 +44,7 @@ var config = {
         removeComments: true,
         keepClosingSlash: true
     },
-    jade: {
+    pug: {
         locals: {
             styleSwitcher: false
         }
@@ -68,7 +64,7 @@ gulp.task('sass', function () {
         .pipe(sass(config.sass).on('error', sass.logError))
         .pipe(autoprefixer(config.autoprefixer))
         .pipe(gulp.dest(distStyleDir))
-        .pipe(cssnano())
+        .pipe(cleanCSS())
         .pipe(rename({
             suffix: '.min'
         }))
@@ -82,29 +78,16 @@ gulp.task('images', function () {
         .pipe(gulp.dest(distImageDir))
 });
 
-gulp.task('jade', function () {
+gulp.task('pug', function () {
     return gulp.src(srcMarkupFiles)
 
-        //only pass unchanged *main* files and *all* the partials
-        .pipe(changed(distMainDir, {
-            extension: '.html'
-        }))
+        //filter out partials (in pug includes)
+        .pipe(filter(['**', '!src/_pug-includes/*']))
 
-        //filter out unchanged partials, but it only works when watching
-        .pipe(gulpif(global.isWatching, cached('jade')))
-
-        //find files that depend on the files that have changed
-        .pipe(jadeInheritance({
-            basedir: 'src'
-        }))
-
-        //filter out partials (in jade includes)
-        .pipe(filter(['**', '!src/_jade-includes/*']))
-
-        //process jade templates
-        .pipe(jade({
+        //process pug templates
+        .pipe(pug({
             pretty: true,
-            locals: config.jade.locals
+            locals: config.pug.locals
         }))
 
         //save all the files
@@ -134,7 +117,7 @@ gulp.task('vendor', function () {
 
 
 gulp.task('build', gulp.series('clean',
-    gulp.parallel('vendor', 'jade', 'sass', 'copy')));
+    gulp.parallel('vendor', 'pug', 'sass', 'copy')));
 
 
 var getFoldersSrc = function (base, folders) {

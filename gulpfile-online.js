@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 
-var jade = require('gulp-jade');
+var pug = require('gulp-pug');
 var changed = require('gulp-changed');
 var gulpif = require('gulp-if');
 var filter = require('gulp-filter');
@@ -14,7 +14,7 @@ var revAll = require("gulp-rev-all");
 var sass = require('gulp-sass');
 var path = require('path');
 
-var srcMarkupFiles = 'src/**/*.jade'
+var srcMarkupFiles = 'src/**/*.pug'
 var srcSassFiles = 'src/scss/style.*.scss'
 
 var distMainDir = 'tmp/'
@@ -53,7 +53,7 @@ var config = {
         removeComments: true,
         keepClosingSlash: true
     },
-    jade: {
+    pug: {
         locals: {
             styleSwitcher: true
         }
@@ -80,16 +80,16 @@ gulp.task('images', function () {
         .pipe(gulp.dest(distImageDir))
 });
 
-gulp.task('jade', function () {
+gulp.task('pug', function () {
     return gulp.src(srcMarkupFiles)
 
-        //filter out partials (in jade includes)
-        .pipe(filter(['**', '!src/_jade-includes/*']))
+        //filter out partials (in pug includes)
+        .pipe(filter(['**', '!src/_pug-includes/*']))
 
-        //process jade templates
-        .pipe(jade({
+        //process pug templates
+        .pipe(pug({
             pretty: true,
-            locals: config.jade.locals
+            locals: config.pug.locals
         }))
 
         //save all the files
@@ -134,7 +134,7 @@ gulp.task('cdnize', function () {
 
 
 gulp.task('build', gulp.series('clean', 
-    gulp.parallel('vendor', 'jade', 'sass', 'copy'), 
+    gulp.parallel('vendor', 'pug', 'sass', 'copy'), 
     'rev',
     'cdnize')
 );
