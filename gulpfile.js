@@ -86,7 +86,8 @@ gulp.task('pug', function () {
         //find files that depend on the files that have changed
         .pipe(pugInheritance({
             basedir: 'src',
-            skip: 'node_modules'
+            skip: 'node_modules',
+            extension: '.pug'
         }))
 
         //filter out partials (in pug includes)

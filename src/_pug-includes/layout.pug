@@ -3,17 +3,17 @@ html
   block vars
 
   head
-    include head
+    include head.pug
 
   body
 
-    include navbar
+    include navbar.pug
 
     block content
 
-    include footer
+    include footer.pug
 
     if (locals.styleSwitcher)
-      include style-switcher
+      include style-switcher.pug
 
-    include scripts
+    include scripts.pug
