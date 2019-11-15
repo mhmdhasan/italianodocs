@@ -20,7 +20,7 @@ var distMainDir = 'dist/'
 var distStyleDir = 'dist/css/'
 var distVendorDir = 'dist/vendor/'
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'favicon.png']
+var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'icons/**', 'favicon.png']
 
 var config = {
     browserSync: {

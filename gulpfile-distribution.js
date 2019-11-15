@@ -24,7 +24,7 @@ var distImageDir = 'distribution/img/'
 var distVendorDir = 'distribution/vendor/'
 
 
-var copy = ['js/**', 'css/**', 'scss/**', 'img/**', 'docs/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
+var copy = ['js/**', 'css/**', 'img/**', 'docs/**', 'icons/**', 'fonts/**', 'favicon.png', 'readme.txt', 'license.txt', 'credits.txt', 'custom-icons/**']
 
 
 var config = {

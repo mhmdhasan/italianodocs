@@ -19,6 +19,10 @@
 @import "modules/mixins-custom";
 // general styling
 @import "modules/general"; 
+// orion icons
+@import "modules/icons";
+// custom util classes
+@import "modules/utils"; 
 
 // 3rd party scripts override
 @import "modules/3rd-party"; 

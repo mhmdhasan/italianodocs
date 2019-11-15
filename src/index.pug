@@ -26,6 +26,16 @@ block content
                         h4 This is an h4 heading
                         h5 This is an h5 heading
                         h6 This is an h6 heading
+                .card.mb-4
+                    .card-header Icons
+                    .card-body
+                        +svgIcon('speed-1')
+                        +svgIcon('muffin-1', 'text-primary')
+                        +svgIcon('first-aid-kit-1', 'text-muted')
+                        br
+                        +svgIcon('sedan-1', 'svg-icon-big svg-icon-light')
+
+
                 #tables.card.mb-4
                     .card-header
                         | Tables
