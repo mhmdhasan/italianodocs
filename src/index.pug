@@ -1,298 +1,164 @@
 extends _pug-includes/layout
 
 block content
-    .container.py-5
-        h1 Bootstrap(ious) 4 Boilerplate
-        p This is a sample content.
+
+    .container-fluid
+        // HELLO SECTION
+        section.text-center.mb-5.hero
+            img.mb-4(src="img/logo-default.svg", alt="Italiano Restaurant", width="150")
+            +heading('', 'Italiano Restaurant Documentation', 'Documentation', 'mb-2', true)
+            
+            .row
+                .col-lg-8.mx-auto
+                    p.text-muted.lead.mb-3 Thank you for purchasing My product. If you have any questions that are beyond the scope of this help file, please feel free to email me. Thanks so much!
+                    a.reset-anchor.h6.mb-5.d-block.text-primary(href="https://italianodark.netlify.com", target="_blank") Italianolight.netlify.com
+            
     
-        .jumbotron
-            h1 Kitchen Sink
-            p A quick preview of everything Bootstrap has to offer.
-            p
-                a.btn.btn-primary.btn-large(href="#") Learn more »
-                | 
-                a.btn.btn-outline-primary.btn-large(href="#") Learn more »
-        .row
-            .col-lg-6
-                #headings.card.mb-4
-                    .card-header Headings
-                    .card-body
-                        h1.page-header
-                            | Page Header
-                            small With Small Text
-                        h1 This is an h1 heading
-                        h2 This is an h2 heading
-                        h3 This is an h3 heading
-                        h4 This is an h4 heading
-                        h5 This is an h5 heading
-                        h6 This is an h6 heading
-                .card.mb-4
-                    .card-header Icons
-                    .card-body
-                        +svgIcon('speed-1')
-                        +svgIcon('muffin-1', 'text-primary')
-                        +svgIcon('first-aid-kit-1', 'text-muted')
-                        br
-                        +svgIcon('sedan-1', 'svg-icon-big svg-icon-light')
-
-
-                #tables.card.mb-4
-                    .card-header
-                        | Tables
-                    .card-body
-                        table.table.table-hover
-                            thead
-                                tr
-                                    th #
-                                    th First Name
-                                    th Tables
-                            tbody
-                                tr
-                                    td 1
-                                    td Michael
-                                    td Are formatted like this
-                                tr
-                                    td 2
-                                    td Lucille
-                                    td Do you like them?
-                                tr.success
-                                    td 3
-                                    td Success
-                                    td
-                                tr.danger
-                                    td 4
-                                    td Danger
-                                    td
-                                tr.warning
-                                    td 5
-                                    td Warning
-                                    td
-                                tr.active
-                                    td 6
-                                    td Active
-                                    td
-                        table.table.table-striped.table-bordered.table-condensed
-                            thead
-                                tr
-                                    th #
-                                    th First Name
-                                    th Tables
-                            tbody
-                                tr
-                                    td 1
-                                    td Michael
-                                    td This one is bordered and condensed
-                                tr
-                                    td 2
-                                    td Lucille
-                                    td Do you still like it?
-            .col-lg-6
-                #content-formatting.card.mb-4
-                    .card-header
-                        | Content Formatting
-                    .card-body
-                        p.lead This is a lead paragraph.
-                        p
-                            | This is an 
-                            b ordinary paragraph
-                            |  that is 
-                            i long enough
-                            |  to wrap to 
-                            u multiple lines
-                            |  so that you can see how the line spacing looks.
-                        p.text-muted Muted color paragraph.
-                        p.text-warning Warning color paragraph.
-                        p.text-danger Danger color paragraph.
-                        p.text-info Info color paragraph.
-                        p.text-primary Primary color paragraph.
-
-                        nav(aria-label='...')
-                            ul.pagination
-                                li.page-item.disabled
-                                    span.page-link Previous
-                                li.page-item
-                                    a.page-link(href='#') 1
-                                li.page-item.active
-                                    span.page-link
-                                        | 2
-                                        span.sr-only (current)
-                                li.page-item
-                                    a.page-link(href='#') 3
-                                li.page-item
-                                    a.page-link(href='#') Next
-
-                        p
-                            small
-                                | This is text in a 
-                                code small
-                                |  wrapper. 
-                                abbr(title='No Big Deal') NBD
-                                | , right?
-                        hr
-                        address
-                            strong Twitter, Inc.
-                            br
-                            |  795 Folsom Ave, Suite 600
-                            br
-                            |  San Francisco, CA 94107
-                            br
-                            abbr(title='Phone') P:
-                            |  (123) 456-7890
-                        address.col-6
-                            strong Full Name
-                            br
-                            a(href='mailto:#') first.last@example.com
-                        hr
-                        blockquote
-                            | Here's what a blockquote looks like in Bootstrap.
-                            small
-                                | Use 
-                                code small
-                                |  to identify the source.
-                        hr
-                        .row
-                            .col-xs-6
-                                ul
-                                    li Normal Unordered List
-                                    li
-                                        | Can Also Work
-                                        ul
-                                            li With Nested Children
-                                    li Adds Bullets to Page
-                            .col-xs-6
-                                ol
-                                    li Normal Ordered List
-                                    li
-                                        | Can Also Work
-                                        ol
-                                            li With Nested Children
-                                    li Adds Bullets to Page
-                        hr
-                        pre.
-                            \nfunction preFormatting() {  // looks like this;  var something = somethingElse;  return true;}                        
-        #forms.card.mb-4
-            .card-header
-                | Forms
-            .card-body
-                form
-                    fieldset
-                        legend Legend
-                        .form-group
-                            label(for='exampleInputEmail') Email address
-                            input#exampleInputEmail.form-control(type='text', placeholder='Enter email')
-                        .form-group
-                            label(for='exampleInputPassword') Password
-                            input#exampleInputPassword.form-control(type='password', placeholder='Password')
-                        .form-check.form-group
-                            input.form-check-input#checkbox-1(type='checkbox')
-                            label.form-check-label(for="checkbox-1") Check me out
-                        button.btn.btn-primary(type='submit') Submit
-                hr.my-5
-                form.form-inline
-                    input.form-control.mb-2.mr-sm-2(type='text', placeholder='Email')
-                    label.sr-only(for='inlineFormInputGroupUsername2') Username
-                    .input-group.mb-2.mr-sm-2
-                        .input-group-prepend
-                            .input-group-text @
-                        input#inlineFormInputGroupUsername2.form-control(type='text')                    
-                    .form-check.mb-2.mr-sm-2
-                        input#inlineFormCheck.form-check-input(type='checkbox')
-                        label.form-check-label(for='inlineFormCheck')
-                            | Remember me
-                    button.btn.btn-primary.mb-2(type='submit') Submit
-                hr.my-5
-                h4.mb-5 Horizontal form
-                form
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='inputEmail3') Email
-                        .col-sm-10
-                            input#inputEmail3.form-control(type='email', placeholder='Email')
-                    .form-group.row
-                        label.col-sm-2.col-form-label(for='inputPassword3') Password
-                        .col-sm-10
-                            input#inputPassword3.form-control(type='password', placeholder='Password')
-                    fieldset.form-group
-                        .row
-                            legend.col-form-label.col-sm-2.pt-0 Radios
-                            .col-sm-10
-                                .form-check
-                                    input#gridRadios1.form-check-input(type='radio', name='gridRadios', value='option1', checked='')
-                                    label.form-check-label(for='gridRadios1')
-                                        | First radio
-                                .form-check
-                                    input#gridRadios2.form-check-input(type='radio', name='gridRadios', value='option2')
-                                    label.form-check-label(for='gridRadios2')
-                                        | Second radio
-                                .form-check.disabled
-                                    input#gridRadios3.form-check-input(type='radio', name='gridRadios', value='option3', disabled='')
-                                    label.form-check-label(for='gridRadios3')
-                                        | Third disabled radio
-                    .form-group.row
-                        .col-sm-2 Checkbox
-                        .col-sm-10
-                            .form-check
-                                input#gridCheck1.form-check-input(type='checkbox')
-                                label.form-check-label(for='gridCheck1')
-                                    | Example checkbox
-                    .form-group.row                                    
-                        .col-sm-2 Custom Checkbox
-                        .col-sm-10
-                            .custom-control.custom-checkbox
-                                input#customCheck1.custom-control-input(type='checkbox')
-                                label.custom-control-label(for='customCheck1') Check this custom checkbox
-                    .form-group.row                                    
-                        .col-sm-2 Custom Radio
-                        .col-sm-10
-                            .custom-control.custom-radio
-                                input#customRadio1.custom-control-input(type='radio', name='customRadio')
-                                label.custom-control-label(for='customRadio1') Toggle this custom radio
-                            .custom-control.custom-radio
-                                input#customRadio2.custom-control-input(type='radio', name='customRadio')
-                                label.custom-control-label(for='customRadio2') Or toggle this other custom radio
-
-                    .form-group.row
-                        .col-sm-10
-                            button.btn.btn-primary(type='submit') Sign in
-
-
-        #buttons.card.mb-4
-            .card-header
-                | Buttons
-            .card-body
-                p
-                    button.btn.btn-lg.btn-secondary(type='button') Default Lg
-                    button.btn.btn-lg.btn-primary(type='button') Primary
-                    button.btn.btn-lg.btn-success(type='button') Success
-                    button.btn.btn-lg.btn-info(type='button') Info
-                    button.btn.btn-lg.btn-warning(type='button') Warning
-                    button.btn.btn-lg.btn-danger(type='button') Danger
-                    button.btn.btn-lg.btn-link(type='button') Link
-                p
-                    button.btn.btn-secondary(type='button') Default 
-                    button.btn.btn-primary(type='button') Primary
-                    button.btn.btn-success(type='button') Success
-                    button.btn.btn-info(type='button') Info
-                    button.btn.btn-warning(type='button') Warning
-                    button.btn.btn-danger(type='button') Danger
-                    button.btn.btn-link(type='button') Link
-                p
-                    button.btn.btn-sm.btn-secondary(type='button') Default Sm
-                    button.btn.btn-sm.btn-primary(type='button') Primary
-                    button.btn.btn-sm.btn-success(type='button') Success
-                    button.btn.btn-sm.btn-info(type='button') Info
-                    button.btn.btn-sm.btn-warning(type='button') Warning
-                    button.btn.btn-sm.btn-danger(type='button') Danger
-                    button.btn.btn-sm.btn-link(type='button') Link
-        .card
-            .card-header Button dropdown
-            .card-body
-                .dropdown
-                    button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | Dropdown button
-                    .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                        a.dropdown-item(href='#') Action
-                        a.dropdown-item(href='#') Another action
-                        a.dropdown-item(href='#') Something else here
-    
+            ul.list-unstyled.intro-list.mx-auto.text-left
+                li.px-3.py-2.bg-light.mb-1
+                    span.font-weight-bold.text-uppercase.mb-0.small.text-dark Created: 
+                    span.text-muted.pl-2 10/2/2020
+                li.px-3.py-2.bg-light.mb-1.text-muted
+                    span.font-weight-bold.text-uppercase.mb-0.small.text-dark Created By: 
+                    span.text-muted.pl-2 Mohamed Hasan
+                li.px-3.py-2.bg-light.mb-1.text-muted
+                    span.font-weight-bold.text-uppercase.mb-0.small.text-dark Author Email: 
+                    a.reset-anchor.pl-2.reset-anchor(href="mailto:mhmdhasan7@outlook.com") Mhmdhasan7@outlook.com
         
-
+    .container-fluid
+    
+        .row
+            .col-lg-3
+                include _pug-includes/navbar.pug
+            .col-lg-9
+        
+                // INTRODUCTION SECTION
+                section.bg-light.mb-5#intro
+                    +heading('Intro', 'Introduction', 'Introduction', 'mb-3')
+                    p.lead Italiano is a modern clean HTML template for Cafe &amp; Restaurant and any food-related business website. It comes with a modern and smooth design. More features with 7 pages that fulfill almost all your needs. Using advanced Bootstrap 4 Framework with HTML5/CSS3. Clean and clear code, It's responsive and will fit great on all devices. buy it now and boost your restaurant and cafe business.
+                    
+                
+                
+                // FEATURES SECTION
+                section.bg-light.mb-5#features
+                    +heading('Features', 'Theme Features', 'Features', 'mb-3')
+                    ol.p-0.custom-numbers
+                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
+                        li.lead.mb-1 Major Browsers compatibility.
+                        li.lead.mb-1 Modern and clean design.
+                        li.lead.mb-1 SEO Friendly Markup.
+                        li.lead.mb-1 W3C Valide Code.
+                        li.lead.mb-1 Bootstrap 4 Based.
+                        li.lead.mb-1 Google Fonts used.
+                        li.lead.mb-1 Font Awesome Icons used.
+                        li.lead.mb-1 Easy Customization.
+                        li.lead.mb-1 SASS files included (more customization).
+                        li.lead.mb-1 Premium Support.
+                        
+                        
+                
+                // HTML SECTION
+                section.bg-light.mb-5#html
+                    +heading('HTML Structure', 'HTML Structure', 'HTML', 'mb-3')
+                    p.lead.mb-5 Italiano is fully responsive HTML5 Template followed HTML5 Structure. Every section is seperated with Comments.
+                    
+                    h6 Template includes 25 pages, they are:
+                    
+                    ol.p-0.custom-numbers.mb-5
+                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
+                        li.lead.mb-1 Major Browsers compatibility.
+                        li.lead.mb-1 Modern and clean design.
+                        li.lead.mb-1 SEO Friendly Markup.
+                        li.lead.mb-1 W3C Valide Code.
+                        li.lead.mb-1 Bootstrap 4 Based.
+                        li.lead.mb-1 Google Fonts used.
+                        li.lead.mb-1 Font Awesome Icons used.
+                        li.lead.mb-1 Easy Customization.
+                        li.lead.mb-1 SASS files included (more customization).
+                        li.lead.mb-1 Premium Support.
+                        
+                
+                    .pre-outer.position-relative
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | index.html
+                            
+                        pre.prettyprint.lang-html.linenums.px-4.pb-4
+                            include _pug-includes/html-snippet.html
+                        
+                        
+                
+                
+                // CSS SECTION
+                section.bg-light.mb-5#css
+                    +heading('CSS Structure', 'CSS Structure', 'CSS', 'mb-3')
+                    p.lead.mb-5 I'm using latest CSS coding standard. Custom Style written into style.default.css which is override Bootstrap style somewhere else.
+                    
+                    h6 CSS Files included:
+                    
+                    ol.p-0.custom-numbers.mb-5
+                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
+                        li.lead.mb-1 Major Browsers compatibility.
+                        li.lead.mb-1 Modern and clean design.
+                        li.lead.mb-1 SEO Friendly Markup.
+                        li.lead.mb-1 W3C Valide Code.
+                        li.lead.mb-1 Bootstrap 4 Based.
+                        li.lead.mb-1 Google Fonts used.
+                        li.lead.mb-1 Font Awesome Icons used.
+                        li.lead.mb-1 Easy Customization.
+                        li.lead.mb-1 SASS files included (more customization).
+                        li.lead.mb-1 Premium Support.
+                        
+                    p.lead 
+                        code style.default.css
+                        |  file contains all of the specific styling for the template. Here is an example of general style which is specify using following label:
+            
+            
+                
+                
+                
+                // FONTS SECTION
+                section.bg-light.mb-5#fonts
+                    +heading('Fonts', 'Google Fonts', 'Fonts', 'mb-4')
+                    
+                    p.lead.mb-4 We're using typefaces of Google Fonts which are free for commercial use, and you will not have any troubles with licensing. Also, the fonts are easy to implement on your website, so no trouble with font embedding. These font are:
+                    
+                    ol.p-0.custom-numbers.mb-0
+                        li.mb-1
+                            .h6.mb-0.d-inline-block
+                                a.reset-anchor(href="https://fonts.google.com/specimen/Aclonica", target="_blank") Aclonica
+                                span.small.mx-2 &amp;
+                                a.reset-anchor(href="https://fonts.google.com/specimen/Original+Surfer", target="_blank") Original Surfer
+                            span.text-muted.ml-2  For heading
+                            
+                            li
+                                .h6.mb-0.d-inline-block
+                                    a.reset-anchor(href="https://fonts.google.com/specimen/Poppins", target="_blank") Poppins
+                                span.text-muted.ml-2  For text
+                    
+                
+                
+                
+                // IMAGES SECTION
+                section.bg-light.mb-5#images
+                    +heading('Images', 'Template Images', 'Images', 'mb-4')
+                    p.lead We're using a variety of awesome images for demo purposes, you're not allowed to redistribute them neither for free or commercially. You can find your perfect free images at many sources, here're a few examples:
+                    
+                    ol.p-0.custom-numbers.mb-5
+                        li.lead.mb-1 
+                            a.underlined.reset-anchor(href="https://www.pexels.com", target="_blank") pexels.com 
+                            
+                        li.lead.mb-1
+                            a.underlined.reset-anchor(href="https://unsplash.com/images/stock", target="_blank") unsplash.com 
+                            
+                        li.lead
+                            a.underlined.reset-anchor(href="https://www.freeimages.com", target="_blank") freeimages.com 
+                            
+                
+                
+                
+                // THANK YOU SECTION
+                section.bg-light.mb-5#thanks
+                    +heading('Thanks', 'Thank You', 'Thanks', 'mb-4')
+                    p.lead Once again, thank you so much for purchasing this product. As I said at the beginning, I'd be glad to help you if you have any questions related to this product. No guarantees, but I'll do my best to assist. If you have a more general question relating to this product on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.

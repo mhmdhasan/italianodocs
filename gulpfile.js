@@ -20,7 +20,7 @@ var distMainDir = 'dist/'
 var distStyleDir = 'dist/css/'
 var distVendorDir = 'dist/vendor/'
 
-var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', 'icons/**', 'favicon.png']
+var copy = ['js/**', 'img/**', 'css/**', 'fonts/**', '3rd-parties/**', 'favicon.png']
 
 var config = {
     browserSync: {
@@ -119,7 +119,7 @@ gulp.task('vendor', function () {
             base: './node_modules/'
         })
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, ''); 
+            path.dirname = path.dirname.replace(/\/distribute/, '').replace(/\\distribute/, '').replace(/\/dist/, '').replace(/\\dist/, '');
         }))
         .pipe(gulp.dest(distVendorDir));
 });
@@ -134,7 +134,7 @@ function watch(done) {
     gulp.watch("src/scss/**/*.scss", gulp.series('sass'));
     gulp.watch("src/**/*.pug", gulp.series('pug', reload));
 
-    gulp.watch(getFolders('src', copy), gulp.series('copy', reload));
+    gulp.watch(['src/img/**', 'src/js/**'], gulp.series('copy', reload));
 
     console.log('Watching...');
 

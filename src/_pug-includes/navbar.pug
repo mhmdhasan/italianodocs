@@ -1,28 +1,48 @@
 // navbar
-header.header
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        a.navbar-brand(href='#') Navbar
-        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
+.sidebar.sticky-top
+    ul.sidebar-list.list-unstyled.mb-0
+        li.sidebar-item
+            a.sidebar-link.link-scroll.active(href="#intro")
+                i.fas.fa-marker.fa-fw
+                |  Introduction
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#features")
+                i.fas.fa-layer-group.fa-fw
+                |  Features
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#html")
+                i.fab.fa-html5.fa-fw
+                |  HTML Structure
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#css")
+                i.fab.fa-css3-alt.fa-fw
+                |  CSS Structure
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#fonts")
+                i.fas.fa-font.fa-fw
+                |  Fonts
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#images")
+                i.far.fa-image.fa-fw
+                |  Images
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#js")
+                i.fab.fa-js-square.fa-fw
+                |  Javascript
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#sass")
+                i.fab.fa-sass.fa-fw
+                |  Sass Files
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#changelog")
+                i.fas.fa-clipboard-check.fa-fw
+                |  Changelog
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#credits")
+                i.fab.fa-wpforms.fa-fw
+                |  Source &amp; Credits
+        li.sidebar-item
+            a.sidebar-link.link-scroll(href="#thanks")
+                i.fas.fa-heart.fa-fw
+                |  Thank You
         
-        #navbarSupportedContent.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-                li.nav-item.active
-                    a.nav-link(href='#')
-                        | Home 
-                        span.sr-only (current)
-                li.nav-item
-                    a.nav-link(href='#') Link
-                li.nav-item
-                    a.nav-link.disabled(href='#') Disabled
-                li.nav-item.dropdown
-                    a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | Dropdown link
-                    .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-                        a.dropdown-item(href='#') Action
-                        a.dropdown-item(href='#') Another action
-                        a.dropdown-item(href='#') Something else here                
-            form.form-inline.my-2.my-lg-0
-                input.form-control.mr-sm-2(type='text', placeholder='Search')
-                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-

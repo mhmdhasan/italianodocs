@@ -9,11 +9,9 @@ html
 
   body
 
-    include navbar.pug
-
+    block mixins.pug
+    
     block content
-
-    include footer.pug
 
     if (locals.styleSwitcher)
       include style-switcher.pug

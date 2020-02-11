@@ -64,26 +64,26 @@ $colors: map-merge((
 
 // BOOTSTRAPIOUS DYNAMIC BRANDING
 
-$brand-primary: $blue; 
+$brand-primary: $blue;
 
 @if $templateColour == red {
-    $brand-primary:  #ff3f3f;
-} 
+    $brand-primary:  #FD8A06;
+}
 @else if $templateColour == pink {
     $brand-primary:  #ef5285;
-} 
+}
 @else if $templateColour == green {
     $brand-primary:  #429244;
-} 
+}
 @else if $templateColour == blue {
     $brand-primary:  #2b90d9;
-} 
+}
 @else if $templateColour == sea {
     $brand-primary:  #379392;
-} 
+}
 @else if $templateColour == violet {
     $brand-primary:  #9055A2;
-} 
+}
 
 $primary:       $brand-primary !default;
 $secondary:     $gray-600 !default;
@@ -243,7 +243,7 @@ $transition-collapse:         height .35s ease !default;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif:      "Arsenal", sans-serif !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -252,9 +252,9 @@ $font-size-base:              1rem !default; // Assumes the browser default, typ
 $font-size-lg:                ($font-size-base * 1.25) !default;
 $font-size-sm:                ($font-size-base * .875) !default;
 
-$font-weight-light:           300 !default;
+$font-weight-light:           400 !default;
 $font-weight-normal:          400 !default;
-$font-weight-bold:            700 !default;
+$font-weight-bold:            400 !default;
 
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
@@ -267,8 +267,8 @@ $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
-$headings-font-family:        inherit !default;
-$headings-font-weight:        500 !default;
+$headings-font-family:        "Aclonica", sans-serif !default;
+$headings-font-weight:        400 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
@@ -283,10 +283,10 @@ $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
 
-$lead-font-size:              ($font-size-base * 1.25) !default;
+$lead-font-size:              ($font-size-base * 1.1) !default;
 $lead-font-weight:            300 !default;
 
-$small-font-size:             80% !default;
+$small-font-size:             75% !default;
 
 $text-muted:                  $gray-600 !default;
 
