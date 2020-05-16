@@ -43,49 +43,183 @@ block content
                 section.bg-light.mb-5#features
                     +heading('Features', 'Theme Features', 'Features', 'mb-3')
                     ol.p-0.custom-numbers
-                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
-                        li.lead.mb-1 Major Browsers compatibility.
-                        li.lead.mb-1 Modern and clean design.
-                        li.lead.mb-1 SEO Friendly Markup.
-                        li.lead.mb-1 W3C Valide Code.
-                        li.lead.mb-1 Bootstrap 4 Based.
-                        li.lead.mb-1 Google Fonts used.
-                        li.lead.mb-1 Font Awesome Icons used.
-                        li.lead.mb-1 Easy Customization.
+                        li.lead.mb-1 28 HTML pages that fullfil all your needs.
+                        li.lead.mb-1 6 variant theme colors.
+                        li.lead.mb-1 Clean, modern &amp; beautiful design.
+                        li.lead.mb-1 Bootstrap form validation included across all pages.
+                        li.lead.mb-1 Wroking free map that doesn't need an API key.
+                        li.lead.mb-1 Dark theme included.
+                        li.lead.mb-1 Bootstrap 4 latest Based.
+                        li.lead.mb-1 Fully responsive, compatible with all screen viewports.
+                        li.lead.mb-1 Major browsers compatibility.
+                        li.lead.mb-1 SEO friendly markup.
+                        li.lead.mb-1 Well commented files.
+                        li.lead.mb-1 W3C valide code.
+                        li.lead.mb-1 Free Google fonts used.
+                        li.lead.mb-1 Font Awesome icons used.
+                        li.lead.mb-1 Super easy customization.
                         li.lead.mb-1 SASS files included (more customization).
-                        li.lead.mb-1 Premium Support.
-                        
-                        
+                        li.lead.mb-1 Premium support.
+                
+                
+                // TEMPLATE CONTENT
+                section.bg-light.mb-5#templateFiles
+                    +heading('Files', 'Theme Files', 'Files')
+                    p.lead.mb-5 Click on the folder icon to see the files inside each folder.
+                    ul.directory-list
+                        li.folder
+                            | Italiano | Light Theme
+
+                            ul
+                                li.folder(data-toggle="collapse", aria-expanded="false", data-target="#cssFolder")
+                                    | css
+                                    small.small.ml-2.text-gray - &nbsp; Contains the defaul stylesheets
+                                    ul.collapse#cssFolder
+                                        li style.alt.font.css
+                                        li style.alt.font.min.css
+                                        li style.blue.css
+                                        li style.blue.min.css
+                                        li style.default.css
+                                        li style.default.min.css
+                                        li style.green.css
+                                        li style.green.min.css
+                                        li style.pink.css
+                                        li style.pink.min.css
+                                        li style.red.min.css
+                                        li style.red.css
+                                        li style.rounded.min.css
+                                        li style.rounded.css
+                                        li style.sea.min.css
+                                        li style.sea.css
+                                        li style.violet.min.css
+                                        li style.violet.css
+                                        li style.yellow.min.css
+                                        li style.yellow.css
+                                
+                                li.folder(data-toggle="collapse", aria-expanded="false", data-target="#imgFolder")
+                                    | img
+                                    small.small.ml-2.text-gray - &nbsp; Contains template images
+                                    ul.collapse#imgFolder
+                                        li *.svg
+                                        li *.jpg
+                                        li *.png
+                                
+                                li.folder(data-toggle="collapse", aria-expanded="false", data-target="#jsFolder")
+                                    | js
+                                    small.small.ml-2.text-gray - &nbsp; Contains template scripts
+                                    ul.collapse#jsFolder
+                                        li.folder charts
+                                            ul
+                                                li bookings.chart.js
+                                                li charts-config.js
+                                                li visitors.chart.js
+                                        li.folder validation
+                                            ul
+                                                li bs-select-validation.js
+                                                li validation.js
+                                    
+                                        li demo.js
+                                        li front.js
+                                        li leaflet.js
+                                        
+                                li.folder(data-toggle="collapse", aria-expanded="false", data-target="#vendorFolder")
+                                    | vendor
+                                    small.small.ml-2.text-gray - &nbsp; Contains all 3rd party plugins used in template
+                                    ul.collapse#vendorFolder
+                                        li.folder animsition
+                                        li.folder bootstrap
+                                        li.folder bootstrap-datepicker
+                                        li.folder bootstrap-select
+                                        li.folder chart.js
+                                        li.folder jquery
+                                        li.folder jquery.cookie
+                                        li.folder leaflet
+                                        li.folder lightbox2
+                                        li.folder owl.carousel2
+                                        li.folder page-transition
+                                        li.folder timepicker
+                                        
+                                li 404.html
+                                li about-1.html
+                                li about-2.html
+                                li admin-bookings.html
+                                li admin-edit-personal.html
+                                li admin-login.html
+                                li admin-pass-change.html
+                                li admin-personal.html
+                                li admin-reviews.html
+                                li booking.html
+                                li booking-cancellation.html
+                                li booking-confirmation.html
+                                li cancelled.html
+                                li category.html
+                                li contact-1.html
+                                li contact-2.html
+                                li dashboard.html
+                                li dish.html
+                                li gallery.html
+                                li index.html
+                                li login.html
+                                li menu-1.html
+                                li menu-2.html
+                                li register.html
+                                li search-results.html
+                                li typography.html
+                                li verification-code.html
+                                li verified.html
+                    
                 
                 // HTML SECTION
                 section.bg-light.mb-5#html
                     +heading('HTML Structure', 'HTML Structure', 'HTML', 'mb-3')
-                    p.lead.mb-5 Italiano is fully responsive HTML5 Template followed HTML5 Structure. Every section is seperated with Comments.
+                    p.lead.mb-4 Since we're using Bootstrap 4, Bootstrap utility classes are applied to various elements on the page to quickly style them in some manner without the need to write custom CSS rules, we've also prepared a plenty utility classes to fullfil all your needs. In many cases, you just provide a class for your element and observe the result right away. If you’ve never employed utility classes before, fear not: in most cases they are quite simple, yet powerful.
                     
-                    h6 Template includes 25 pages, they are:
+                    p.lead.mb-4 You can customize your headings from 
+                        code data-text 
+                        |  attribute. this attribute is used for dding bacground text for heading elements.
+                    .pre-outer.position-relative.mb-5
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | index.html
+                        pre.prettyprint.lang-html.linenums.px-4.pb-4
+                            include _pug-includes/heading-snippet.html
                     
-                    ol.p-0.custom-numbers.mb-5
-                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
-                        li.lead.mb-1 Major Browsers compatibility.
-                        li.lead.mb-1 Modern and clean design.
-                        li.lead.mb-1 SEO Friendly Markup.
-                        li.lead.mb-1 W3C Valide Code.
-                        li.lead.mb-1 Bootstrap 4 Based.
-                        li.lead.mb-1 Google Fonts used.
-                        li.lead.mb-1 Font Awesome Icons used.
-                        li.lead.mb-1 Easy Customization.
-                        li.lead.mb-1 SASS files included (more customization).
-                        li.lead.mb-1 Premium Support.
+                    h4 HTML base markup
+                    p.lead.mb-4 All the page markup are wrapped inside  
+                        code .m-pagetransition 
+                        |  wrapper, that's responsible for achieving the transiton effect on page load.
+                    
+                    .pre-outer.position-relative.mb-4
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | index.html
+                        pre.prettyprint.lang-html.linenums.px-4.pb-4
+                            include _pug-includes/transition-snippet.html
                         
-                
-                    .pre-outer.position-relative
+                        
+                    p.lead.mb-4 Every page contains 3 main blocks, they're 
+                        code &lt;header&gt; 
+                        |  , 
+                        code .page-content 
+                        |  and 
+                        code &lt;footer&gt;
+                        | . Make sure to put all your markup inside 
+                        code .page-content 
+                        |  to avoid any horizontal overflowing. Your main navigation goes inside 
+                        code &lt;header&gt; 
+                        |  and your main footer goes inside 
+                        code &lt;footer&gt;
+                        
+                    .pre-outer.position-relative.mb-4
                         .pre-mockup
                         .pre-tab-indicator
                             i.fab.fa-html5
                             | index.html
                             
                         pre.prettyprint.lang-html.linenums.px-4.pb-4
-                            include _pug-includes/html-snippet.html
+                            include _pug-includes/hero-snippet.html
                         
                         
                 
@@ -96,25 +230,74 @@ block content
                     p.lead.mb-5 I'm using latest CSS coding standard. Custom Style written into style.default.css which is override Bootstrap style somewhere else.
                     
                     h6 CSS Files included:
-                    
-                    ol.p-0.custom-numbers.mb-5
-                        li.lead.mb-1 Fully Responsive, Compatible with all screen sizes.
-                        li.lead.mb-1 Major Browsers compatibility.
-                        li.lead.mb-1 Modern and clean design.
-                        li.lead.mb-1 SEO Friendly Markup.
-                        li.lead.mb-1 W3C Valide Code.
-                        li.lead.mb-1 Bootstrap 4 Based.
-                        li.lead.mb-1 Google Fonts used.
-                        li.lead.mb-1 Font Awesome Icons used.
-                        li.lead.mb-1 Easy Customization.
-                        li.lead.mb-1 SASS files included (more customization).
-                        li.lead.mb-1 Premium Support.
+                    ul.directory-list
+                        li.folder
+                            | css
+                            small.small.ml-2.text-gray - &nbsp; Contains the defaul stylesheets
+                            ul
+                                li style.alt.font.css
+                                li style.alt.font.min.css
+                                li style.blue.css
+                                li style.blue.min.css
+                                li style.default.css
+                                li style.default.min.css
+                                li style.green.css
+                                li style.green.min.css
+                                li style.pink.css
+                                li style.pink.min.css
+                                li style.red.min.css
+                                li style.red.css
+                                li style.rounded.min.css
+                                li style.rounded.css
+                                li style.sea.min.css
+                                li style.sea.css
+                                li style.violet.min.css
+                                li style.violet.css
+                                li style.yellow.min.css
+                                li style.yellow.css
+                                
                         
-                    p.lead 
+                    p.lead.mb-4
                         code style.default.css
                         |  file contains all of the specific styling for the template. Here is an example of general style which is specify using following label:
+                    .pre-outer.position-relative.mb-4
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | style.default.css
+                            
+                        pre.prettyprint.lang-css.linenums.px-4.pb-4
+                            include _pug-includes/css-snippet-1.html
             
-            
+                    p.lead.mb-4 If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.
+                    
+                    p.lead.mb-4 
+                        strong.font-weight-bold For example: 
+                        | If you want to change the style of Hero section, find the following section in the stylesheet:
+                    .pre-outer.position-relative.mb-4
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | style.default.css
+                            
+                        pre.prettyprint.lang-css.linenums.px-4.pb-4
+                            include _pug-includes/hero-css-snippet.html
+                    
+                    p.lead.mb-4 
+                        code Style.default.css 
+                        |  contains some utilitis that help you to customize your template from the HTML page, for example: 
+                        code .list-icons 
+                        |  class helps you to create an unordered list with colored icons. 
+                
+                    p.lead.mb-4 Here is an Example for the included helpers:
+                    .pre-outer.position-relative.mb-4
+                        .pre-mockup
+                        .pre-tab-indicator
+                            i.fab.fa-html5
+                            | style.default.css
+                            
+                        pre.prettyprint.lang-css.linenums.px-4.pb-4
+                            include _pug-includes/utilities-snippet.html
                 
                 
                 
@@ -122,7 +305,7 @@ block content
                 section.bg-light.mb-5#fonts
                     +heading('Fonts', 'Google Fonts', 'Fonts', 'mb-4')
                     
-                    p.lead.mb-4 We're using typefaces of Google Fonts which are free for commercial use, and you will not have any troubles with licensing. Also, the fonts are easy to implement on your website, so no trouble with font embedding. These font are:
+                    p.lead.mb-4 I'm using typefaces of Google Fonts which are free for commercial use, and you will not have any troubles with licensing. Also, the fonts are easy to implement on your website, so no trouble with font embedding. These font are:
                     
                     ol.p-0.custom-numbers.mb-0
                         li.mb-1
@@ -143,7 +326,7 @@ block content
                 // IMAGES SECTION
                 section.bg-light.mb-5#images
                     +heading('Images', 'Template Images', 'Images', 'mb-4')
-                    p.lead We're using a variety of awesome images for demo purposes, you're not allowed to redistribute them neither for free or commercially. You can find your perfect free images at many sources, here're a few examples:
+                    p.lead I'm using a variety of awesome images for demo purposes, you're not allowed to redistribute them neither for free or commercially. You can find your perfect free images at many sources, here're a few examples:
                     
                     ol.p-0.custom-numbers.mb-5
                         li.lead.mb-1 

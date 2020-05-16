@@ -87,14 +87,14 @@ body {
 }
 
 .sidebar {
-    // width: 14rem;
-    // position: fixed;
-    // top: 50%;
-    // transform: translateY(-50%);
+
+    &-item:first-of-type {
+        .sidebar-link {
+            border-top: 1px solid #f8f8f8;
+        }
+    }
     &-link {
         padding: 0.7rem 1.5rem;
-        // border-radius: 0.2rem;
-        // border-radius: 30rem;
         font-family: $headings-font-family;
         color: #333;
         background: $light;
@@ -107,11 +107,8 @@ body {
         border-left: 4px solid transparent;
 
         i {
-            // margin-left: -1rem;
             margin-right: 0.3rem;
-            // opacity: 0;
             transition: all 0.2s;
-            // color: #fff;
         }
 
 
@@ -272,6 +269,7 @@ a {
 .pre-outer {
     overflow: hidden;
     border-radius: 1rem;
+    background: #262c34;
     &::before {
         content: '';
         display: block;
