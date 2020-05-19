@@ -332,3 +332,37 @@ a {
         }
     }
 }
+
+
+
+/* ===============================================================
+     SCROLL TOP BUTTON
+  =============================================================== */
+#scrollTop {
+  background: #FD8A06;
+  color: #fff;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  top: calc(50% - 20px);
+  right: -110px;
+  z-index: 9998;
+  font-size: 0.8em;
+  transition: all 0.3s;
+  padding-right: 1rem;
+  box-shadow: 0 0 5px rgba(253, 138, 6, 0.3);
+}
+
+#scrollTop.active {
+  right: -60px;
+}
+
+#scrollTop:hover {
+  right: 0;
+}
+
+#scrollTop i {
+  margin: 0 20px;
+}
