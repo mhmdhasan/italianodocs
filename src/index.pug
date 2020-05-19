@@ -28,7 +28,7 @@ block content
     .container-fluid
     
         .row
-            .col-lg-3
+            .col-lg-3.mb-5.mb-lg-0
                 include _pug-includes/navbar.pug
             .col-lg-9
         
@@ -536,7 +536,18 @@ block content
                             a.underlined.reset-anchor(href="https://codepen.io/sfi0zy/pen/PpdgXY", target="_blank") Preloader
                         
                             
-                        
+                
+                // DARK THEME SECTION ======================================================================== 
+                section.bg-light.mb-5#darkTheme
+                    +heading('Dark theme', 'Dark theme', 'Dark', 'mb-4')
+                    
+                    p.lead.mb-2 All the light theme's rules &amp; structure above are applied to dark theme, but there's an important note you should notice, 
+                        strong.font-weight-bold Dark theming
+                        | isn't achieved with olny CSS changing rules, as the base template is mainly based on using Boostrap 4 utilities, I've maintained the dark styling by using Bootstrap 4 utilities, too. e.g. 
+                        code .bg-dark 
+                        |  . So, ideally, deal with dark theme as a separate template.   
+                
+                
                         
                 // THANK YOU SECTION ======================================================================== 
                 section.bg-light.mb-5#thanks
