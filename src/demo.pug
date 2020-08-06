@@ -1,0 +1,114 @@
+extends _pug-includes/layout
+
+block content
+    
+    .bg-pattern.bg-hero-text(data-text="Italiano")
+        .container.py-5
+            
+            section.text-center.hero.py-5
+                img.mb-5(src="img/logo-default.svg", alt="Italiano Restaurant", width="150")
+                header.bg-heading-text(class="mb-2", data-text="")
+                    .index-forward
+                        .row
+                            .col-lg-10.mx-auto
+                                h1 Creative 
+                                    span Restautant 
+                                    | Bootstrap Template
+                
+                .row.mb-5
+                    .col-lg-8.mx-auto
+                        p.text-muted.lead.mb-5 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                        a.btn.btn-outline-primary.rounded-0.px-4.link-scroll(href="#demos") 
+                            i.fas.fa-qrcode.mr-2
+                            | See demos
+                        a.btn.btn-primary.rounded-0.px-4(href="#") 
+                            i.fas.fa-shopping-basket.mr-2
+                            | Buy now
+    
+    
+    section.py-5#demos.bg-white
+        .container.py-5
+            +centerHeading('Demos', 'Choose from two themes', 'Demos', 'mb-5')
+            
+            .row.pt-4
+                .col-lg-6.mb-4
+                    a.d-block.demo-link(href="https://italianolight.netlify.app/", target="_blank", style="background-image: url(img/italiano-light.png)")
+                        .demo-link-overlay.p-5.d-flex.align-items-center.justify-content-center.flex-column
+                            h2.text-white.mb-3 Light Theme
+                            button.btn.btn-outline-light.rounded-0.px-4(href="#") 
+                                i.fas.fa-shopping-basket.mr-2
+                                | Live demo
+                .col-lg-6.mb-4
+                    a.d-block.demo-link(href="https://italianodark.netlify.app/", target="_blank", style="background-image: url(img/italiano-dark.png)")
+                        .demo-link-overlay.p-5.d-flex.align-items-center.justify-content-center.flex-column
+                            h2.text-white.mb-3 Dark Theme
+                            button.btn.btn-outline-light.rounded-0.px-4(href="#") 
+                                i.fas.fa-shopping-basket.mr-2
+                                | Live demo
+                    
+
+
+    section.py-5.bg-light
+        .container.py-5
+            +centerHeading('Theme Features', 'Theme features', 'Features', 'mb-5')
+            
+            .row.text-center.align-items-stretch
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fab.fa-html5.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 28 HTML pages
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-palette.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 6 variant theme colors
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-paint-brush.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Clean & modern design.
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-check-circle.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Bootstrap form validation
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-map-pin.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Free map included
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-moon.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Dark theme included
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fab.fa-sass.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 SASS files included
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-mobile.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Fully responsive
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fab.fa-chrome.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Major browsers compatibility
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fab.fa-searchengin.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 SEO friendly markup
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-bug.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 W3C valide code
+                        
+                .col-lg-3.mb-4
+                    .feature-item.px-4.h-100.flex-column.justify-content-center.py-5
+                        i.fas.fa-headphones-alt.fa-2x.text-primary.mb-3
+                        h3.h5.base-font-family.font-weight-bold.mb-0 Premium support

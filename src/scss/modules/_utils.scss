@@ -1,338 +1,383 @@
-/*
-* ===================================================
-*    Custom Bootstrapious Utils
-* ===================================================
-*/
-
-/*
-   Text utils
-   ------------------------
-*/
-
-.text-uppercase {
-    @include uppercase;
-    letter-spacing: .1em;
-}
-
-.text-sm {
-    font-size: $font-size-sm;
-}
-
-.text-base {
-    font-size: $font-size-base;
-}
-
-.text-lg {
-    font-size: $font-size-lg;
-}
-
-
-.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-.text-shadow-primary {
-    text-shadow: 2px 2px 2px rgba(theme-color('primary'), .1);
-}
-
-.text-decoration-underline {
-    text-decoration: underline;
-}
-
-.text-inherit {
-    color: inherit;
-}
-
-/*
-    Rounded corners - lg, sm
-   ------------------------
-*/
-
-.rounded-lg {
-    border-radius: $border-radius-lg;
-}
-
-.rounded-sm {
-    border-radius: $border-radius-sm;
-}
-
-.rounded-xl {
-    border-radius: 10rem;
-}
-
-/*
-    Responsive borders - border-[breakpoint]
-   ------------------------
-*/
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-        .border#{$infix} {
-            border: $border-width solid $border-color !important;
-        }
-    }
-}
-
-/*
-    Opacity helpers - .opacity-[1-9]
-    ------------------------
-*/
-
-
-$opacity: 1 2 3 4 5 6 7 8 9 10;
-
-@each $current-opacity in $opacity {
-    .opacity-#{$current-opacity} {
-        opacity: #{$current-opacity/10};
-    }
-}
-
-/*
-    Z-index helpers - .z-index-[10-50]
-    ------------------------
-*/
-
-$z-index: 10 20 30 40 50;
-
-@each $current-z-index in $z-index {
-    .z-index-#{$current-z-index} {
-        z-index: #{$current-z-index};
-    }
-}
-
-/*
-     Letter spacing helpers - .letter-spacing-[0-5]
-    ------------------------
-*/
-
-.letter-spacing-0 {
-    letter-spacing: 0 !important;
-}
-
-$spacing: .1em .2em .3em .4em .5em;
-
-@each $current-spacing in $spacing {
-    $i: index($spacing, $current-spacing);
-
-    .letter-spacing-#{$i} {
-        letter-spacing: #{$current-spacing};
-    }
-}
-
-/*
-     Colours and backgrounds
-    ------------------------
-*/
-
-
-@each $color,
-$value in $theme-colors {
-    .text-hover-#{$color} {
-        transition: $transition-base;
-
-        &:focus,
-        &:hover {
-            color: $value !important;
-        }
-    }
-
-    a.text-hover-#{$color} {
-        transition: $transition-base;
-
-        &:focus,
-        &:hover {
-            color: $value !important;
-        }
-    }
-
-    .bg-#{$color}-light {
-        background-color: theme-color-level($color, -11);
-    }
-
-    .border-#{$color} {
-        border-color: $value !important;
-    }
-}
-
-@each $color,
-$value in $grays {
-    .bg-gray-#{$color} {
-        background: $value !important;
-    }
-
-    .text-gray-#{$color} {
-        color: $value;
-    }
-}
-
-@each $color,
-$value in $theme-colors {
-    .badge-#{$color}-light {
-        color: $value;
-        background-color: theme-color-level($color, -11);
-    }
-}
-
-/*
-     Transparent overlays
-    ------------------------
-*/
-
-.overlay-content {
-    position: relative;
-    z-index: 20;
-}
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
-    .light-overlay#{$infix},
-    .overlay-hover-light#{$infix} {
-        @include media-breakpoint-up($next) {
-            position: relative;
-
-            &::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                content: ' ';
-                background: #fff;
-            }
-        }
-    }
-
-    .overlay-hover-light#{$infix} {
-        @include media-breakpoint-up($next) {
-            &::after {
-                transition: $transition-fade;
-                opacity: 0;
-            }
-        }
-    }
-
-    .light-overlay#{$infix},
-    .overlay-hover-light#{$infix}:hover {
-        @include media-breakpoint-up($next) {
-            &::after {
-                opacity: .4;
-            }
-        }
-    }
-
-    .light-overlay#{$infix}-0,
-    .overlay-hover-light#{$infix}-0:hover {
-        @include media-breakpoint-up($next) {
-            &::after {
-                display: none;
-            }
-        }
-    }
-
-    .dark-overlay#{$infix} {
-        position: relative;
-
-        @include media-breakpoint-up($next) {
-            &::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                content: ' ';
-                opacity: .4;
-                background: #000;
-            }
-        }
-    }
-
-    .dark-overlay#{$infix}-0 {
-        @include media-breakpoint-up($next) {
-            &::after {
-                display: none;
-            }
-        }
-    }
-}
-
-/*
-     Other
-    ------------------------
-*/
-
-.overflow-visible {
-    overflow: visible !important;
-}
-
-.shadow-0 {
-    box-shadow: none !important;
-}
-
-.directory-list ul {
-  margin-left: 10px;
-  padding-left: 20px;
-  border-left: 1px dashed #ddd;
-
-  ul li {
-      font-size: 0.95rem;
-  }
-}
-
-.directory-list li {
-  list-style: none;
-  color: #888;
-  font-size: 17px;
-  font-style: italic;
-  font-weight: normal;
-}
-
-.directory-list a {
-  border-bottom: 1px solid transparent;
-  color: #888;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.directory-list a:hover {
-  border-color: #eee;
-  color: #000;
-}
-
-.directory-list .folder,
-.directory-list .folder > a {
-  color: #777;
-  font-weight: bold;
+/* ===============================================================
+    CUSTOM UNTILS
+=============================================================== */
+.text-small {
+    font-size: 0.9rem !important;
 }
 
 .text-gray {
     color: #aaa !important;
 }
 
-
-/* The icons
--------------------------------------------------------------- */
-
-.directory-list li:before {
-  margin-right: 10px;
-  content: "";
-  height: 20px;
-  vertical-align: middle;
-  width: 20px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  /* file icon by default */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='lightgrey' d='M85.714,42.857V87.5c0,1.487-0.521,2.752-1.562,3.794c-1.042,1.041-2.308,1.562-3.795,1.562H19.643 c-1.488,0-2.753-0.521-3.794-1.562c-1.042-1.042-1.562-2.307-1.562-3.794v-75c0-1.487,0.521-2.752,1.562-3.794 c1.041-1.041,2.306-1.562,3.794-1.562H50V37.5c0,1.488,0.521,2.753,1.562,3.795s2.307,1.562,3.795,1.562H85.714z M85.546,35.714 H57.143V7.311c3.05,0.558,5.505,1.767,7.366,3.627l17.41,17.411C83.78,30.209,84.989,32.665,85.546,35.714z' /></svg>");
-  background-position: center 2px;
-  background-size: 60% auto;
+.bg-cover {
+    background-size: cover !important;
 }
 
-.directory-list li.folder:before {
-  /* folder icon if folder class is specified */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='lightblue' d='M96.429,37.5v39.286c0,3.423-1.228,6.361-3.684,8.817c-2.455,2.455-5.395,3.683-8.816,3.683H16.071 c-3.423,0-6.362-1.228-8.817-3.683c-2.456-2.456-3.683-5.395-3.683-8.817V23.214c0-3.422,1.228-6.362,3.683-8.817 c2.455-2.456,5.394-3.683,8.817-3.683h17.857c3.422,0,6.362,1.228,8.817,3.683c2.455,2.455,3.683,5.395,3.683,8.817V25h37.5 c3.422,0,6.361,1.228,8.816,3.683C95.201,31.138,96.429,34.078,96.429,37.5z' /></svg>");
-  background-position: center top;
-  background-size: 75% auto;
-  cursor: pointer;
+.bg-center {
+    background-position: center center !important;
 }
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+a.bg-light {
+    &:hover, &:focus {
+        background-color: darken($light, 1%) !important;
+    }
+}
+
+.m-pagetransition {
+    visibility: hidden;
+}
+
+.text-uppercase {
+    letter-spacing: 0.1em !important;
+}
+
+.text-grayest {
+    color: darken($light, 10%) !important;
+}
+
+.line-height-sm {
+    line-height: 1 !important;
+}
+
+.reset-anchor {
+    color: inherit;
+    transition: all 0.3s;
+    &:hover, &:focus {
+        color: $brand-primary;
+        text-decoration: none;
+    }
+}
+
+.text-underline {
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: $gray-800;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: inline-block;
+    }
+}
+
+
+.font-family-base {
+    font-family: $font-family-sans-serif !important;
+}
+
+.bg-pattern {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url('../img/pattern.png');
+        opacity: 0.04;
+        background-size: 10rem;
+    }
+}
+
+.bg-cover {
+    background-size: cover !important;
+}
+
+.bg-center {
+    background-position: center center !important;
+}
+
+.bg-full-left {
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -48.5rem;
+        width: 50rem;
+        height: 100%;
+        background: $dark;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+    }
+}
+
+.main-dish-image {
+    min-height: 23rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: radial-gradient(circle, rgba($dark, 0.1) 70%, $dark);
+    }
+}
+
+.cube {
+    padding-bottom: 100%;
+}
+
+.bg-hero-text {
+    position: relative;
+
+    span.bg-hero-text-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 15rem;
+        font-family: $headings-font-family;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.01;
+        z-index: 2;
+        user-select: none;
+        cursor: default;
+        min-width: 100vw;
+    }
+}
+
+.bg-heading-text, .position-relative {
+    position: relative;
+
+    span.bg-heading-text-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 7rem;
+        font-family: $headings-font-family;
+        opacity: 0.015;
+        z-index: 2;
+        user-select: none;
+        cursor: default;
+        min-width: 100vw;
+
+        @include media-breakpoint-down(md) {
+            font-size: 5rem;
+        }
+
+        &.center {
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0.03;
+        }
+    }
+
+    &.text-center {
+        span.bg-heading-text-content {
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &[class*='lg-left'] {
+        span.bg-heading-text-content {
+            @include media-breakpoint-up(lg) {
+                left: 0;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+
+.index-forward {
+    position: relative;
+    z-index: 99;
+}
+
+.bg-none {
+    background: none !important;
+}
+
+.container {
+    position: relative;
+    z-index: 99;
+}
+
+.heading-lg {
+    h2 {
+        font-size: 6rem !important;
+        @include media-breakpoint-up(md) {
+            font-size: 12rem !important;
+            line-height: 1 !important;
+        }
+    }
+}
+
+.drop-caps::first-letter {
+    font-size: 2.9em;
+    font-weight: $font-weight-bold;
+    color: $brand-primary;
+    line-height: 1;
+    padding-right: 0.3rem;
+    float: left;
+}
+
+@each $color,
+$value in $theme-colors {
+    .drop-caps-#{$color} {
+        &::first-letter {
+            color: $value;
+        }
+    }
+}
+
+.accordion {
+    .card {
+        overflow: visible;
+        border-radius: 0 !important;
+    }
+
+    .card-header {
+        background: none;
+    }
+}
+
+.accordion-toggle {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 1.5rem;
+    color: $light;
+    background: $dark;
+    font-family: $headings-font-family;
+    transition: all 0.3s;
+    position: relative;
+
+    &:hover, &:focus {
+        background: darken($dark, 1%);
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &::before {
+        content: '\f078';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 1.5rem;
+        transform: translateY(-50%);
+        font-family: 'Font Awesome\ 5 Free';
+        font-weight: 900;
+        transition: all 0.3s;
+        font-size: 0.75rem;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 2px solid $brand-primary;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    &[aria-expanded='true'] {
+        background: $dark;
+        color: $brand-primary;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+        &::before {
+            content: '\f077';
+            color: $brand-primary;
+        }
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.border-dashed {
+    border-style: dashed !important;
+}
+
+.highlight {
+    padding: 0 0.5rem;
+    border-radius: 2px;
+}
+
+
+@each $color,
+$value in $theme-colors {
+    .highlight-#{$color} {
+        background: rgba($value, 0.95);
+        color: #fff;
+    }
+}
+
+
+/* List with bullets */
+.list-bullets {
+    list-style: none;
+}
+
+.list-bullets li {
+    display: flex;
+    align-items: center;
+}
+
+.list-bullets li::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $brand-primary;
+    border: 3px solid lighten($brand-primary, 5%);
+    display: block;
+    margin-right: 0.5rem;
+}
+
+/* Unordered list with custom numbers style */
+ol.custom-numbers {
+    list-style: none;
+}
+
+ol.custom-numbers li {
+    counter-increment: my-awesome-counter;
+}
+
+ol.custom-numbers li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: $brand-primary;
+    font-weight: bold;
+}
+
+.no-caret {
+    &::after {
+        display: none !important;
+    }
+}
+
+.bg-darker {
+    background: darken($dark, 2%) !important;
+}
+
+// @each $color,
+// $value in $theme-colors {
+//     .bg-#{$color}-opac {
+//         background: lighten($value, 5) !important;
+//     }
+// }

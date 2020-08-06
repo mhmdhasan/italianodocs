@@ -1,20 +1,21 @@
-/* ========================================= 
-   
-      THEMING OF THE BOOTSTRAP COMPONENTS           
+/* =========================================
 
-   ========================================= 
-   
-    1 - NAVBAR
-    2 - BUTTONS
-    3 - TYPE
-    4 - PAGINATION
-    5 - UTILITIES
-    6 - FORMS
-    7 - CODE
-    8 - NAV
-    9 - CARD
-    10 - DROPDOWNS
-   
+      THEMING OF THE BOOTSTRAP COMPONENTS
+
+   =========================================
+
+    1 .  NAVBAR
+    2 .  BUTTONS
+    3 .  TYPE
+    4 .  PAGINATION
+    5 .  UTILITIES
+    6 .  FORMS
+    7 .  CODE
+    8 .  NAV
+    9 .  CARD
+    10 . DROPDOWNS
+    11 . MODALS
+
 */
 
 /*
@@ -39,6 +40,10 @@
     line-height: 1;
     border: $border-width solid transparent; // remove default button style
     @include border-radius($navbar-toggler-border-radius);
+
+    &:focus {
+        outline: none !important;
+    }
 }
 
 // Dark links against a light background
@@ -52,6 +57,9 @@
     .navbar-nav {
         .nav-link {
             color: $navbar-light-color;
+            font-family: $headings-font-family;
+            transition: all 0.3s;
+            font-size: 0.9rem;
             @include hover-focus {
                 color: $navbar-light-hover-color;
             }
@@ -75,6 +83,53 @@
     }
     .navbar-text {
         color: $navbar-light-color;
+    }
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+        padding: 0;
+        border-top: 2px solid $brand-primary;
+        margin-top: 0.5rem;
+        background: lighten($body-bg, 3%);
+
+        .dropdown-item {
+            font-size: 0.9rem;
+            color: #888;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s;
+            border-bottom: 1px solid $body-bg;
+
+            &:active {
+                transition: none;
+                color: #fff;
+            }
+        }
+    }
+
+    .megamenu {
+        position: static;
+    }
+
+    .megamenu .dropdown-menu {
+        background: none;
+        width: 100%;
+        z-index: 999;
+        margin-top: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        background: lighten($body-bg, 3%);
+
+        .dropdown-item {
+            padding: 0.2rem 0;
+            font-size: 0.85rem;
+            background: none;
+
+            &:hover {
+                color: $brand-primary;
+                transform: translateX(3px);
+            }
+        }
     }
 }
 
@@ -121,8 +176,9 @@
 
 .btn {
     font-weight: $btn-font-weight;
+    font-family: $headings-font-family;
     border: $btn-border-width solid transparent;
-    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base * 0.9, $btn-line-height, $btn-border-radius);
     @include transition($btn-transition);
     &:focus,
     &.focus {
@@ -143,6 +199,26 @@
     }
 }
 
+.btn {
+    &:focus, &:active {
+        text-decoration: none !important;
+    }
+}
+
+.btn-outline-light {
+    &:hover, &:focus {
+        color: $body-bg !important;
+    }
+}
+
+.btn-primary, .btn-success, .btn-warning, .btn-info {
+    color: #fff !important;
+}
+.btn-outline-primary:active, .btn-outline-success:active, .btn-outline-warning:active, .btn-outline-info:active {
+    color: #fff !important;
+}
+
+
 // Make a button look and behave like a link
 .btn-link {
     font-weight: $font-weight-normal;
@@ -158,6 +234,11 @@
     &:disabled,
     &.disabled {
         color: $btn-link-disabled-color;
+    }
+
+    &:hover, &:focus {
+        text-decoration: none;
+        box-shadow: none !important;
     }
 }
 
@@ -182,15 +263,15 @@ $value in $theme-colors {
 // Button Sizes
 //
 .btn-lg {
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg* 0.85, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm * 0.85, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
 /*
- * 3. TYPE  
+ * 3. TYPE
  */
 
 body {
@@ -321,12 +402,56 @@ mark,
     margin-bottom: $spacer * 2;
     font-size: $blockquote-font-size;
     border-left: 5px solid theme-color();
+
+    &-text {
+        font-size: $font-size-base;
+        padding: 2rem;
+        border: 3px solid lighten($body-bg, 10%);
+        position: relative;
+        background: $body-bg;
+
+        &::before {
+            content: '';
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid lighten($body-bg, 10%);
+            position: absolute;
+            bottom: -15px;
+            left: 2rem;
+            display: block;
+        }
+        &::after {
+            content: '';
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid $body-bg;
+            position: absolute;
+            bottom: -9px;
+            left: 2rem;
+            display: block;
+        }
+    }
 }
 
 .blockquote-footer {
-    color: $blockquote-small-color;
+    color: $gray-500;
+    font-family: $headings-font-family;
+    font-size: 1.2rem;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
     &::before {
-        content: "\2014 \00A0"; // em dash, nbsp
+        display: none;
+    }
+
+    cite {
+        font-family: $font-family-sans-serif;
+        display: block;
+        line-height: 2;
+        color: $brand-primary;
+        font-size: 0.75rem;
+        font-weight: $font-weight-light;
+        font-style: normal;
     }
 }
 
@@ -364,7 +489,7 @@ mark,
     color: $pagination-color;
     background-color: $pagination-bg;
     border: $pagination-border-width solid $pagination-border-color;
-    
+
     &:hover {
         z-index: 2;
         color: $pagination-hover-color;
@@ -372,7 +497,7 @@ mark,
         background-color: $pagination-hover-bg;
         border-color: $pagination-hover-border-color;
       }
-    
+
       &:focus {
         z-index: 2;
         outline: $pagination-focus-outline;
@@ -434,6 +559,7 @@ $value in $theme-colors {
     color: $input-color;
     background-color: $input-bg;
     border: $input-border-width solid $input-border-color;
+    font-size: 0.9rem;
     @if $enable-rounded {
         border-radius: $input-border-radius;
     }
@@ -449,6 +575,9 @@ $value in $theme-colors {
     @include form-control-focus(); // Placeholder
     &::placeholder {
         color: $input-placeholder-color;
+        font-size: 0.85rem;
+        font-weight: 300;
+        font-family: $font-family-sans-serif;
     }
     &:disabled,
     &[readonly] {
@@ -459,10 +588,30 @@ $value in $theme-colors {
 select.form-control {
     &:not([size]):not([multiple]) {
         height: $input-height;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     &:focus::-ms-value {
         color: $input-color;
         background-color: $input-bg;
+    }
+}
+
+label {
+    font-family: $headings-font-family;
+    // font-weight: $font-weight-normal;
+}
+
+.label-required {
+    position: relative;
+    &::after {
+        content: '*';
+        display: block;
+        color: $brand-primary;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -0.8rem;
     }
 }
 
@@ -481,7 +630,7 @@ select.form-control-sm {
 
 .form-control-lg {
     padding: $input-padding-y-lg $input-padding-x-lg;
-    font-size: $font-size-lg;
+    font-size: $font-size-base * 0.95;
     line-height: $input-line-height-lg;
     @include border-radius($input-border-radius-lg);
 }
@@ -614,13 +763,36 @@ code {
 }
 
 .nav-pills {
+    position: relative;
+
     .nav-link {
         @include border-radius($nav-pills-border-radius);
+        font-family: $headings-font-family;
+        color: $light;
+        transition: all 0.3s;
+        position: relative;
+        z-index: 2;
+
+        &:hover {
+            color: $brand-primary;
+        }
     }
     .nav-link.active,
     .show>.nav-link {
-        color: $nav-pills-link-active-color;
+        color: #fff;
         background-color: $nav-pills-link-active-bg;
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            border: 1px solid #fff;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            opacity: 0;
+        }
     }
 }
 
@@ -768,3 +940,80 @@ code {
     }
 }
 
+.dropdown-toggle {
+    &::after {
+        border: none;
+        content: '\f078';
+        font-family: 'Font Awesome\ 5 Free';
+        font-weight: 900;
+        font-size: 0.65rem;
+        vertical-align: middle;
+        padding-left: 0.1rem;
+    }
+}
+
+
+/*
+* 11. MODALS
+*/
+.modal {
+    .modal-content {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid $modal-content-border-color;
+        border-radius: $modal-content-border-radius;
+        outline: 0;
+    }
+}
+
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+a.bg-dark {
+    &:hover, &:focus {
+        background-color: darken($dark, 1%) !important;
+    }
+}
+.btn-dark {
+    &:hover, &:focus {
+        background-color: darken($dark, 1%) !important;
+        border-color: darken($dark, 1%) !important;
+    }
+}
+
+
+.jumbotron {
+    background: $jumbotron-bg;
+    position: relative;
+
+    @include media-breakpoint-up(sm) {
+        padding: 4rem 3rem;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url('../img/pattern.png');
+        opacity: 0.04;
+        background-size: 10rem;
+        z-index: 1;
+    }
+
+    * {
+        z-index: 2;
+        position: relative;
+    }
+}

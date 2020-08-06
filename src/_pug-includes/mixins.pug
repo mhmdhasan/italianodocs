@@ -11,3 +11,17 @@ mixin heading(smallText, largeText, bgText, headingClass, topLevelHeading)
               h1 #{largeText}
           if (!topLevelHeading)
               h2 #{largeText}
+
+
+//- Center heading mixin
+mixin centerHeading(smallText, largeText, bgText, headingClass, topLevelHeading)
+  if (!headingClass)
+      - headingClass = ''
+  // Section heading
+  header.bg-heading-text.text-center(class=headingClass, data-text=bgText)
+      .index-forward
+          p.text-uppercase.text-primary.font-weight-bold.small.mb-2 #{smallText}
+          if (topLevelHeading == true)
+              h1 #{largeText}
+          if (!topLevelHeading)
+              h2 #{largeText}
