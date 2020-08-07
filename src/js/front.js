@@ -15,21 +15,6 @@ $(function () {
         });
     });
 
-    /* ===============================================================
-         ADD TEXT BACKGROUND FOR THEME COMPONENTS
-      =============================================================== */
-    $(window).on('load', function () {
-        bgHeroText.each(function () {
-            var bgHeroTextContent = $(this).attr('data-text');
-            $(this).prepend('<span class="bg-hero-text-content">' + bgHeroTextContent + '</span>');
-        });
-
-        bgHeadingText.each(function () {
-            var bgHeadingContent = $(this).attr('data-text');
-            $(this).prepend('<span class="bg-heading-text-content">' + bgHeadingContent + '</span>');
-        });
-    });
-
 
     // ---------------------------------------------- //
     // Scroll Spy
