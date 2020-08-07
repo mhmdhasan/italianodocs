@@ -270,6 +270,13 @@ $value in $theme-colors {
     @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm * 0.85, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
+.btn-outline-light {
+    &:hover {
+        color: #000 !important;
+    }
+}
+
+
 /*
  * 3. TYPE
  */
