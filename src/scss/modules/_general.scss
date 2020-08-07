@@ -448,3 +448,25 @@ a {
 #scrollTop i {
   margin: 0 20px;
 }
+
+.hero-bg {
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        opacity: 0.94;
+    }
+}
+
+.demo-heading {
+    @include media-breakpoint-up(lg) {
+        font-size: 3.5rem !important;
+    }
+}
